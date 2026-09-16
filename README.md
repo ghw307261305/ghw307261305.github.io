@@ -45,7 +45,7 @@ draft: false           # true で非公開
 | 内容 | 場所 |
 | --- | --- |
 | ツール・テンプレート一覧 | `src/data/tools.json`（ファイル本体は `public/files/`。今は空のプレースホルダ） |
-| 日中IT用語対照 | `src/data/glossary.json` |
+| IT用語対照 | `src/data/glossary.json` |
 | About・依頼できること | `src/pages/[lang]/about.astro` 冒頭の `c` オブジェクト |
 | 免責事項 / プライバシーポリシー | `src/pages/[lang]/disclaimer.astro`, `privacy.astro` |
 | ナビ・共通の文言 | `src/i18n/index.ts` |
