@@ -44,7 +44,7 @@ draft: false           # true で非公開
 
 | 内容 | 場所 |
 | --- | --- |
-| ツール・テンプレート一覧 | `src/data/tools.json`（ファイル本体は `public/files/`。今は空のプレースホルダ） |
+| ツール・テンプレート一覧 | `src/data/tools.json`（ダウンロード機能は当面オフ。一覧表示のみ） |
 | IT用語対照 | `src/data/glossary.json` |
 | About・依頼できること | `src/pages/[lang]/about.astro` 冒頭の `c` オブジェクト |
 | 免責事項 / プライバシーポリシー | `src/pages/[lang]/disclaimer.astro`, `privacy.astro` |
@@ -55,6 +55,5 @@ draft: false           # true で非公開
 
 - [ ] `astro.config.mjs` の `site` と `public/robots.txt` の Sitemap を本番ドメインに変更
 - [ ] `src/i18n/index.ts` の `authorName` と About ページの `[メールアドレス]` を埋める
-- [ ] `public/files/` のプレースホルダを実ファイルに差し替える
 - [ ] About ページの写真（`.photo`）とトップの丸アイコン（`.avatar`）に画像を入れる
 - [ ] 免責事項・プライバシーポリシーの日付と内容を確認する

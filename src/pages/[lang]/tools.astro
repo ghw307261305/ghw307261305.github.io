@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Icon from '../../components/Icon.astro';
 import { langs, t, fmtDate, type Lang } from '../../i18n';
 export function getStaticPaths() { return langs.map((lang) => ({ params: { lang } })); }
 const lang = Astro.params.lang as Lang;
@@ -23,7 +22,7 @@ const c = {
     <div class="tags"><span class="tag on">{c.all}</span>{Object.values(c.cats).map((n) => <span class="tag">{n}</span>)}</div>
     <div class="tbl-wrap">
       <table class="tbl">
-        <thead><tr>{c.cols.map((h) => <th>{h}</th>)}<th></th></tr></thead>
+        <thead><tr>{c.cols.map((h) => <th>{h}</th>)}</tr></thead>
         <tbody>
           {tools.map((tl) => (
             <tr id={tl.data.id}>
@@ -32,7 +31,6 @@ const c = {
               <td><span class="pill">{tl.data.format}</span></td>
               <td><div class="langs">{langs.map((l) => <span class:list={['pill', { off: !tl.data.langs.includes(l) }]}>{l.toUpperCase()}</span>)}</div></td>
               <td class="date">{fmtDate(tl.data.updated, lang)}</td>
-              <td><a href={tl.data.file} download aria-label="download"><Icon name="download" size={18} /></a></td>
             </tr>
           ))}
         </tbody>

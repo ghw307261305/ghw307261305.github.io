@@ -76,7 +76,7 @@ const nums = ['01', '02', '03', '04'];
       <div class="tb-grid">
         {tools.map((tl) => (
           <a class="card tool" href={`/${lang}/tools/#${tl.data.id}`}>
-            <div class="tool-top"><span class="pill">{tl.data.format}</span><Icon name="download" size={18} /></div>
+            <div class="tool-top"><span class="pill">{tl.data.format}</span></div>
             <span class="ttl">{tl.data.name[lang]}</span>
             <span class="desc">{tl.data.description[lang]}</span>
             <div class="langs">{langs.map((l) => <span class:list={['pill', { off: !tl.data.langs.includes(l) }]}>{l.toUpperCase()}</span>)}</div>

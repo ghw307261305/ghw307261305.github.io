@@ -26,7 +26,7 @@ const tools = defineCollection({
     langs: z.array(z.enum(['ja', 'zh', 'en'])),
     category: z.string(),
     updated: z.coerce.date(),
-    file: z.string(),
+    file: z.string().optional(),
   }),
 });
 
