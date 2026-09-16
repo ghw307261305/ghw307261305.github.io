@@ -8,7 +8,7 @@ export default defineConfig({
   trailingSlash: 'always',
   i18n: {
     defaultLocale: 'ja',
-    locales: ['ja', 'zh', 'en'],
+    locales: ['ja', 'zh'],
     routing: { prefixDefaultLocale: true, redirectToDefaultLocale: true },
   },
   integrations: [sitemap()],

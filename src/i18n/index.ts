@@ -1,5 +1,6 @@
 export type Lang = 'ja' | 'zh' | 'en';
-export const langs: Lang[] = ['ja', 'zh', 'en'];
+// 英語は当面オフ。復活させるときは 'en' を追加し、astro.config.mjs の locales にも戻す
+export const langs: Lang[] = ['ja', 'zh'];
 export const defaultLang: Lang = 'ja';
 export type Section = 'tech' | 'management' | 'cases' | 'essays';
 export const sections: Section[] = ['tech', 'management', 'cases', 'essays'];
