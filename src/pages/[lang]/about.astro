@@ -11,15 +11,45 @@ const c = {
   ja: {
     eyebrow: 'About', title: '運営者と、依頼できること',
     role: 'ITエンジニア / プロジェクトマネージャー', base: '東京 · 日本語 / 中国語 / 英語',
-    dl: [['経歴', 'IT業界 16 年。日中で 40 件超の案件を担当。2014 年より日本を拠点に活動'], ['業種', '金融・保険、物流、CRM、ERP'], ['技術', 'C / C++ / Java / Python / JavaScript の汎用開発から、Salesforce・ServiceNow、AWS / GCP / Azure の設計・構築まで'], ['AI', 'OpenAI · Claude / Claude Code · Gemini · DeepSeek。主要な AI を業務システムへ導入'], ['連絡', '[メールアドレス]']],
-    bio: [
-      'IT業界で 16 年、日本と中国の両方で 40 件を超えるシステム案件を手がけてきたエンジニア／プロジェクトマネージャーです。2014 年からは日本企業の現場に拠点を移し、金融・保険、物流、CRM、ERP の各領域で、要件定義から本番リリース、保守までを一貫して担当してきました。',
-      '技術面では、C / C++ / Java / Python / JavaScript による業務システム開発を土台に、Salesforce・ServiceNow などのプラットフォーム、AWS / GCP / Azure でのクラウド設計・構築まで対応します。AI 導入では OpenAI、Claude / Claude Code、Gemini、DeepSeek といった主要な AI を、既存の業務システムに組み込む設計から現場定着まで扱います。開発者として手を動かすことと、PM として案件全体を設計・統制すること、その両方を同じ案件の中で担えるのが強みです。',
-      '日本語・中国語・英語でのコミュニケーションが可能で、日本の顧客と中国の開発チームの間に立つ案件も数多く経験しています。このサイトでは、実案件で検証済みの手順と判断、および業務で実際に使っているツール・テンプレートを公開しています。ご相談・ご依頼は下記の連絡先までお寄せください。',
+    dl: [
+      ['経験', 'IT 業界 16 年以上（2009 年〜）。日中で 40 件超の案件'],
+      ['拠点', '2014 年より日本。四川省成都出身'],
+      ['学歴', '大学卒業（ソフトウェア工学専攻）'],
+      ['資格', 'PMP · IT ストラテジスト · プロジェクトマネージャ · Salesforce 認定 11 種 ほか'],
+      ['連絡', '[メールアドレス]'],
     ],
+    bio: [
+      '中国・四川省成都の、山あいの小さな村に生まれました。家は豊かではなく、村を出る道は勉強しかありませんでした。大学でソフトウェア工学を学び、大連で IT の仕事に就いて、対日案件と中国国内案件の両方を経験しました。2009 年から数えて 16 年以上、関わった案件は大小あわせて 40 件を超えます。',
+      '2014 年に来日してからは、日本企業の現場で働いています。教育、金融・保険、製造、物流、不動産、小売と業種はさまざまですが、共通しているのは、日本の開発プロセスの中で要件定義から本番リリース、運用保守までを一貫して担当してきたことです。技術は Java や C# での業務システム開発から始まり、2017 年からは Salesforce を軸に、ServiceNow、Power Platform / Dynamics 365、Azure でのデータ基盤と生成 AI（RAG）の PoC〜本開発まで広げてきました。',
+      '役割は開発者と TL / PM の両方です。Fit&Gap、PoC、要件定義といった上流で論点を整理し、実装フェーズでは自分で手を動かし、稼働後の障害対応やデータ補正まで責任を持つ。この三つを同じ案件の中で担えるのが強みだと思っています。このサイトには、その案件で実際に起きた問題と効いた対処だけを書いています。相談や依頼は、下の連絡先からどうぞ。',
+    ],
+    career: { h: '経歴の概要', cols: ['領域', '期間', '内容'], rows: [
+      ['業務システム開発', '2009 年〜', 'Java / Spring Boot、C#、JavaScript / TypeScript（React、Vue.js）、Python、SQL。大連での対日・中国国内案件から、来日後の日本企業の業務システムまで。'],
+      ['Salesforce', '2017 年〜', 'Sales Cloud、Service Cloud、Experience Cloud、Agentforce、Data Cloud。Fit&Gap・PoC・要件定義から Apex / LWC / Flow の実装、リリース、運用まで。TL として長期案件を推進。'],
+      ['ServiceNow', '2021 年〜', 'ITSM 基盤再構築、決裁システム、Scoped Application。Service Catalog、Flow Designer、Business Rule、Script Include、ACL、CMDB、IntegrationHub、REST API 連携。'],
+      ['Power Platform / Dynamics 365', '2021 年〜', 'Dataverse、Power Apps、Power Automate、Power Pages、Power BI。製造・物流・不動産・小売の業務 DX。Excel・メール・紙運用からの移行。'],
+      ['Azure · データ基盤 · 生成 AI', '2022 年〜', 'Azure OpenAI Service、Azure AI Search、App Service、Cosmos DB、Data Factory、Databricks、Microsoft Fabric。RAG の設計・精度評価・PoC から本開発まで。OpenAI / Claude / Gemini / DeepSeek の業務適用。'],
+      ['プロジェクト管理', '通年', 'TL / PM として WBS、進捗・課題・品質管理、成果物レビュー、顧客折衝、ベンダー調整。アジャイル・ウォーターフォール双方に対応。'],
+    ]},
+    projects: { h: '主な案件', desc: '業種と規模のみ記載。詳細は「案件の記録」に匿名化して書いています', items: [
+      ['教育', '人材マッチングシステムの新規構築（Salesforce）', 'TL · 200 人月規模 · 2021 年〜長期', 'Fit&Gap、PoC、要件定義から Apex / LWC 開発、本番リリース、障害対応、週次運用まで一貫して担当。'],
+      ['金融', 'ナレッジ管理・RAG 質疑応答システム（Azure）', 'TL / SE', 'React・TypeScript・FastAPI で構築。Azure AI Search と Azure OpenAI Service を組み合わせ、プロトタイプ、PoC、精度評価を経て本開発へ。'],
+      ['製造', 'ITSM 基盤再構築（ServiceNow）', 'TL / SE', 'Service Catalog と承認ワークフロー、Incident / Problem / CMDB / Knowledge。AWS・Ansible・z/OS との自動化連携。'],
+      ['製造', '設備保全・点検管理システム（Power Platform）', 'SE', 'Dataverse のデータモデル、Power Apps の点検画面、Power Automate による定期点検スケジュールと未実施アラート、外部保全システムとの REST 連携。'],
+      ['金融', 'グループ内決裁システム（ServiceNow）', 'SE', '申請から決裁までのワークフロー、承認者決定ロジック、ITSM / ITAM / ITOM、ACL 設計、REST API（Basic / OAuth）連携。'],
+      ['教育', '助成金・奨学金オンライン申請審査システム（Salesforce）', 'SE', '申請・審査のデータモデル設計、LWC / Aura 画面、帳票（OPROARTS）、通知、DataLoader 移行、本番障害対応。'],
+      ['製造', '販売支援システム（Salesforce）', 'SE', '受注マスタまわりの Lightning 画面、Apex トリガー、承認フロー、基幹システム（R/3）連携、データ移行。'],
+      ['物流', '配送進捗管理システム（Power Platform）', 'TL / SE', '拠点ごとに分かれていた配送依頼・実績を Dataverse に集約。承認・通知フロー、CSV 取込、REST 連携、Power BI 可視化。'],
+    ]},
+    certs: { h: '保有資格', groups: [
+      ['Salesforce', ['認定アドミニストレーター', '認定上級アドミニストレーター', '認定 Platform アプリケーションビルダー', '認定 Platform デベロッパー', '認定上級 Platform デベロッパー', '認定 Sales Cloud コンサルタント', '認定 Service Cloud コンサルタント', '認定 Experience Cloud コンサルタント', '認定アプリケーションアーキテクト', '認定 Platform Data アーキテクト', '認定 Agentforce スペシャリスト']],
+      ['Microsoft', ['Dynamics 365 Functional Consultant', 'Power Platform Functional Consultant']],
+      ['ServiceNow', ['Certified System Administrator（CSA）', 'Certified Implementation Specialist – ITSM', 'Certified Application Developer（CAD）']],
+      ['プロジェクト管理 · 国家資格', ['PMP', 'IT ストラテジスト試験（IPA）', 'プロジェクトマネージャ試験（IPA）']],
+    ]},
     services: { h: '依頼できること', items: [
       ['Salesforce / ServiceNow の開発・設計レビュー', 'Apex / LWC / フローの実装、既存組織の設計レビュー、デプロイが通らない・パフォーマンスが出ないときの切り分け。', 'スポット / 継続'],
-      ['クラウド（AWS / GCP / Azure）の設計・構築', '業務システムのクラウド移行、構成設計、デプロイの自動化。基幹系との連携やバッチ設計を含みます。', 'スポット / 継続'],
+      ['クラウド（Azure / AWS / GCP）の設計・構築', '業務システムのクラウド移行、構成設計、デプロイの自動化。基幹系との連携やバッチ設計を含みます。', 'スポット / 継続'],
       ['案件のコンサルティング・技術相談', '要件が固まらない、進め方が見えない、技術選定で迷っている。16 年分の案件経験をもとに、次の一手を一緒に決めます。', 'スポット'],
       ['AI導入の PoC 設計と現場定着', '「まず何をやるか」の絞り込み、OpenAI / Claude / Gemini / DeepSeek の選定と既存システムへの組み込み、PoC の計画書、現場の担当者が使い続けられる形にするまでの伴走。', '継続'],
       ['日中ブリッジ', '中国側の開発チームとの仕様連携、レビュー、進捗の可視化。日本語の仕様書をそのまま渡して失敗する前に。', 'スポット / 継続'],
@@ -31,15 +61,45 @@ const c = {
   zh: {
     eyebrow: 'About', title: '关于我，以及可以委托的事',
     role: 'IT工程师 / 项目经理', base: '东京 · 日语 / 中文 / 英语',
-    dl: [['经历', 'IT 行业 16 年，中日两地 40 余个项目。2014 年起以日本为据点'], ['行业', '金融保险、物流、CRM、ERP'], ['技术', '从 C / C++ / Java / Python / JavaScript 的通用开发，到 Salesforce、ServiceNow，以及 AWS / GCP / Azure 的设计与部署'], ['AI', 'OpenAI · Claude / Claude Code · Gemini · DeepSeek。主流 AI 均可导入业务系统'], ['联系', '[邮箱地址]']],
-    bio: [
-      '我是一名在 IT 行业深耕 16 年的工程师／项目经理，在中国和日本累计主导和参与超过 40 个系统项目。2014 年起常驻日本，在金融保险、物流、CRM、ERP 等领域，全流程负责从需求定义到上线、运维的各个阶段。',
-      '技术上，以 C / C++ / Java / Python / JavaScript 的业务系统开发为基础，覆盖 Salesforce、ServiceNow 等平台，以及 AWS / GCP / Azure 上的云架构设计与部署。AI 导入方面，OpenAI、Claude / Claude Code、Gemini、DeepSeek 等主流 AI 都能对应，从接入既有业务系统的设计到一线落地。既能作为开发者亲自动手，也能作为 PM 统筹整个项目，并且能在同一个项目里同时承担这两个角色，是我最大的优势。',
-      '可以用日语、中文、英语工作，有大量在日本客户与中国开发团队之间承担桥梁角色的经验。这个网站公开的，是在真实项目中验证过的步骤和判断，以及工作中实际在用的工具和模板。咨询与合作，请通过下方联系方式与我联系。',
+    dl: [
+      ['经验', 'IT 行业 16 年以上（2009 年起）。中日两地 40 余个项目'],
+      ['据点', '2014 年起在日本。四川成都人'],
+      ['学历', '大学本科，软件工程专业'],
+      ['资格', 'PMP · IT战略师 · 项目经理（日本国家资格）· Salesforce 认证 11 项 等'],
+      ['联系', '[邮箱地址]'],
     ],
+    bio: [
+      '我出生在四川成都的一个偏远小山村。家里条件差，走出山村的路只有读书一条。大学读的软件工程，毕业后在大连进入 IT 行业，对日项目和国内项目都做过。从 2009 年算起，到现在 16 年以上，经手的项目大大小小超过 40 个。',
+      '2014 年来日本，此后一直在日本企业的一线工作。教育、金融保险、制造、物流、不动产、零售，行业不同，但都是在日本的开发流程里，从需求定义一直负责到上线和运维。技术上从 Java、C# 的业务系统开发起步，2017 年起以 Salesforce 为主轴，又扩展到 ServiceNow、Power Platform / Dynamics 365，以及 Azure 上的数据平台和生成式 AI（RAG）从 PoC 到正式开发。',
+      '角色上，开发者和 TL / PM 两边都做。在 Fit&Gap、PoC、需求定义这些上游阶段把问题理清，实现阶段自己动手写，上线后的故障处理和数据修正也一起负责到底。能在同一个项目里把这三件事都扛下来，是我最大的优势。这个网站只写这些项目里真实发生过的问题和有效的处理办法。有咨询或委托，请通过下面的联系方式找我。',
+    ],
+    career: { h: '经历概要', cols: ['领域', '时间', '内容'], rows: [
+      ['业务系统开发', '2009 年起', 'Java / Spring Boot、C#、JavaScript / TypeScript（React、Vue.js）、Python、SQL。从大连的对日和国内项目，到来日后的日本企业业务系统。'],
+      ['Salesforce', '2017 年起', 'Sales Cloud、Service Cloud、Experience Cloud、Agentforce、Data Cloud。从 Fit&Gap、PoC、需求定义到 Apex / LWC / Flow 实现、发布、运维。以 TL 身份推进长期项目。'],
+      ['ServiceNow', '2021 年起', 'ITSM 平台重构、审批决裁系统、Scoped Application。Service Catalog、Flow Designer、Business Rule、Script Include、ACL、CMDB、IntegrationHub、REST API 对接。'],
+      ['Power Platform / Dynamics 365', '2021 年起', 'Dataverse、Power Apps、Power Automate、Power Pages、Power BI。制造、物流、不动产、零售的业务 DX，从 Excel、邮件、纸质流程迁移过来。'],
+      ['Azure · 数据平台 · 生成式 AI', '2022 年起', 'Azure OpenAI Service、Azure AI Search、App Service、Cosmos DB、Data Factory、Databricks、Microsoft Fabric。RAG 的设计、精度评估，从 PoC 到正式开发。OpenAI / Claude / Gemini / DeepSeek 的业务落地。'],
+      ['项目管理', '贯穿全程', '以 TL / PM 身份负责 WBS、进度・课题・质量管理、交付物评审、客户沟通、供应商协调。敏捷和瀑布都能对应。'],
+    ]},
+    projects: { h: '主要项目', desc: '只写行业和规模。细节在「案件复盘」里匿名化后展开', items: [
+      ['教育', '人才匹配系统新建（Salesforce）', 'TL · 200 人月规模 · 2021 年起长期', '从 Fit&Gap、PoC、需求定义到 Apex / LWC 开发、上线、故障处理、每周运维，全程负责。'],
+      ['金融', '知识管理・RAG 问答系统（Azure）', 'TL / SE', 'React・TypeScript・FastAPI 构建。组合 Azure AI Search 与 Azure OpenAI Service，经原型、PoC、精度评估后进入正式开发。'],
+      ['制造', 'ITSM 平台重构（ServiceNow）', 'TL / SE', 'Service Catalog 与审批工作流，Incident / Problem / CMDB / Knowledge。与 AWS、Ansible、z/OS 的自动化对接。'],
+      ['制造', '设备保全・点检管理系统（Power Platform）', 'SE', 'Dataverse 数据模型，Power Apps 点检画面，Power Automate 定期点检排程与未执行告警，与外部保全系统的 REST 对接。'],
+      ['金融', '集团内审批决裁系统（ServiceNow）', 'SE', '从申请到决裁的工作流，审批人判定逻辑，ITSM / ITAM / ITOM，ACL 设计，REST API（Basic / OAuth）对接。'],
+      ['教育', '补助金・奖学金在线申请审查系统（Salesforce）', 'SE', '申请与审查的数据模型设计，LWC / Aura 画面，报表（OPROARTS），通知，DataLoader 迁移，生产故障处理。'],
+      ['制造', '销售支援系统（Salesforce）', 'SE', '订单主数据相关的 Lightning 画面、Apex 触发器、审批流程、核心系统（R/3）对接、数据迁移。'],
+      ['物流', '配送进度管理系统（Power Platform）', 'TL / SE', '把分散在各据点的配送申请和实绩集中到 Dataverse。审批・通知流程，CSV 导入，REST 对接，Power BI 可视化。'],
+    ]},
+    certs: { h: '持有资格', groups: [
+      ['Salesforce', ['Administrator', 'Advanced Administrator', 'Platform App Builder', 'Platform Developer I', 'Platform Developer II', 'Sales Cloud Consultant', 'Service Cloud Consultant', 'Experience Cloud Consultant', 'Application Architect', 'Data Architect', 'Agentforce Specialist']],
+      ['Microsoft', ['Dynamics 365 Functional Consultant', 'Power Platform Functional Consultant']],
+      ['ServiceNow', ['Certified System Administrator（CSA）', 'Certified Implementation Specialist – ITSM', 'Certified Application Developer（CAD）']],
+      ['项目管理 · 日本国家资格', ['PMP', 'IT战略师考试（IPA）', '项目经理考试（IPA）']],
+    ]},
     services: { h: '可以委托的事', items: [
       ['Salesforce / ServiceNow 开发・设计评审', 'Apex / LWC / Flow 实现，既有组织的设计评审，部署不通过、性能上不去时的问题定位。', '单次 / 长期'],
-      ['云平台（AWS / GCP / Azure）设计与部署', '业务系统上云、架构设计、部署自动化。包括与核心系统的对接和批处理设计。', '单次 / 长期'],
+      ['云平台（Azure / AWS / GCP）设计与部署', '业务系统上云、架构设计、部署自动化。包括与核心系统的对接和批处理设计。', '单次 / 长期'],
       ['项目咨询・技术答疑', '需求定不下来、不知道怎么推、技术选型拿不准。基于 16 年的项目经验，一起把下一步定下来。', '单次'],
       ['AI导入的 PoC 设计与落地', '先做什么的取舍，OpenAI / Claude / Gemini / DeepSeek 的选型与接入既有系统，PoC 计划书，陪跑到一线人员能持续用起来为止。', '长期'],
       ['中日桥梁', '与中国开发团队的需求对接、评审、进度可视化。在把日语规格书原样丢过去出问题之前。', '单次 / 长期'],
@@ -51,15 +111,45 @@ const c = {
   en: {
     eyebrow: 'About', title: 'Who runs this site, and what I can help with',
     role: 'IT engineer / Project manager', base: 'Tokyo · Japanese / Chinese / English',
-    dl: [['Background', '16 years in IT, 40+ projects across Japan and China. Based in Japan since 2014'], ['Industries', 'Finance & insurance, logistics, CRM, ERP'], ['Skills', 'General development in C / C++ / Java / Python / JavaScript through to Salesforce, ServiceNow, and design and deployment on AWS / GCP / Azure'], ['AI', 'OpenAI · Claude / Claude Code · Gemini · DeepSeek. Integrating the major AI platforms into business systems'], ['Contact', '[email address]']],
-    bio: [
-      'I am an IT engineer and project manager with 16 years in the industry and more than 40 system projects delivered across Japan and China. Based in Japan since 2014, I have owned the full lifecycle, from requirements definition through production release and maintenance, in finance and insurance, logistics, CRM and ERP.',
-      'Technically, I build on a foundation of business-system development in C / C++ / Java / Python / JavaScript, extending to platforms such as Salesforce and ServiceNow and to cloud architecture and deployment on AWS, GCP and Azure. For AI adoption I work with the major platforms, OpenAI, Claude / Claude Code, Gemini and DeepSeek, from integration design with existing business systems through to rollout on the floor. My distinguishing strength is covering both roles on the same project: hands-on development, and end-to-end project design and control as PM.',
-      'I work in Japanese, Chinese and English, and have extensive experience bridging Japanese clients and development teams in China. This site publishes procedures and decisions verified on real projects, together with the tools and templates I use in daily work. For consulting or project enquiries, please use the contact details below.',
+    dl: [
+      ['Experience', '16+ years in IT (since 2009). 40+ projects across Japan and China'],
+      ['Based in', 'Japan since 2014. Originally from Chengdu, Sichuan'],
+      ['Education', 'University degree in software engineering'],
+      ['Credentials', 'PMP · IT Strategist · Project Manager (Japan national exams) · 11 Salesforce certifications, and more'],
+      ['Contact', '[email address]'],
     ],
+    bio: [
+      'I was born in a small mountain village outside Chengdu, Sichuan. My family had little, and studying was the only way out. I read software engineering at university, then started in IT in Dalian, working on both Japan-facing and domestic Chinese projects. Counting from 2009, that is over 16 years and more than 40 projects, large and small.',
+      'I moved to Japan in 2014 and have worked on-site at Japanese companies since. Education, finance and insurance, manufacturing, logistics, real estate, retail: the industries vary, but the work has always been the same, owning a project inside the Japanese development process from requirements through production release and maintenance. Technically I started with business-system development in Java and C#, made Salesforce my core from 2017, and have since extended to ServiceNow, Power Platform / Dynamics 365, and data platforms and generative AI (RAG) on Azure from PoC to production.',
+      'I work as both developer and TL / PM. Framing the questions upstream in Fit&Gap, PoC and requirements definition, writing the code myself in implementation, and taking responsibility for incidents and data fixes after go-live. Being able to carry all three on the same project is what I consider my strength. This site covers only problems that actually happened on those projects and the fixes that actually worked. For consulting or project requests, use the contact details below.',
+    ],
+    career: { h: 'Career overview', cols: ['Area', 'Period', 'Details'], rows: [
+      ['Business-system development', '2009–', 'Java / Spring Boot, C#, JavaScript / TypeScript (React, Vue.js), Python, SQL. From Japan-facing and domestic projects in Dalian to business systems at Japanese companies.'],
+      ['Salesforce', '2017–', 'Sales Cloud, Service Cloud, Experience Cloud, Agentforce, Data Cloud. Fit&Gap, PoC and requirements through Apex / LWC / Flow implementation, release and operations. Long-running projects as TL.'],
+      ['ServiceNow', '2021–', 'ITSM platform rebuild, approval systems, scoped applications. Service Catalog, Flow Designer, Business Rules, Script Includes, ACLs, CMDB, IntegrationHub, REST API integration.'],
+      ['Power Platform / Dynamics 365', '2021–', 'Dataverse, Power Apps, Power Automate, Power Pages, Power BI. Business DX in manufacturing, logistics, real estate and retail, migrating from Excel, email and paper.'],
+      ['Azure · data platforms · generative AI', '2022–', 'Azure OpenAI Service, Azure AI Search, App Service, Cosmos DB, Data Factory, Databricks, Microsoft Fabric. RAG design, accuracy evaluation, PoC to production. Applying OpenAI / Claude / Gemini / DeepSeek to business systems.'],
+      ['Project management', 'Throughout', 'As TL / PM: WBS, progress, issue and quality management, deliverable reviews, client negotiation, vendor coordination. Both agile and waterfall.'],
+    ]},
+    projects: { h: 'Selected projects', desc: 'Industry and scale only. Details appear, anonymized, in the case notes', items: [
+      ['Education', 'New talent-matching system (Salesforce)', 'TL · ~200 person-months · long-running since 2021', 'Fit&Gap, PoC and requirements through Apex / LWC development, production release, incident response and weekly operations.'],
+      ['Finance', 'Knowledge management and RAG Q&A system (Azure)', 'TL / SE', 'Built with React, TypeScript and FastAPI. Azure AI Search combined with Azure OpenAI Service; prototype, PoC and accuracy evaluation, then full development.'],
+      ['Manufacturing', 'ITSM platform rebuild (ServiceNow)', 'TL / SE', 'Service Catalog and approval workflows, Incident / Problem / CMDB / Knowledge. Automation integration with AWS, Ansible and z/OS.'],
+      ['Manufacturing', 'Equipment maintenance and inspection system (Power Platform)', 'SE', 'Dataverse data model, Power Apps inspection screens, Power Automate for scheduled inspections and overdue alerts, REST integration with an external maintenance system.'],
+      ['Finance', 'Group-wide approval system (ServiceNow)', 'SE', 'Request-to-approval workflows, approver determination logic, ITSM / ITAM / ITOM, ACL design, REST API integration (Basic / OAuth).'],
+      ['Education', 'Online grant and scholarship application review system (Salesforce)', 'SE', 'Data model for applications and review, LWC / Aura screens, document output (OPROARTS), notifications, DataLoader migration, production incident response.'],
+      ['Manufacturing', 'Sales support system (Salesforce)', 'SE', 'Lightning screens around order master data, Apex triggers, approval flows, integration with the core system (R/3), data migration.'],
+      ['Logistics', 'Delivery progress management system (Power Platform)', 'TL / SE', 'Consolidated delivery requests and results from separate sites into Dataverse. Approval and notification flows, CSV import, REST integration, Power BI visualization.'],
+    ]},
+    certs: { h: 'Certifications', groups: [
+      ['Salesforce', ['Administrator', 'Advanced Administrator', 'Platform App Builder', 'Platform Developer I', 'Platform Developer II', 'Sales Cloud Consultant', 'Service Cloud Consultant', 'Experience Cloud Consultant', 'Application Architect', 'Data Architect', 'Agentforce Specialist']],
+      ['Microsoft', ['Dynamics 365 Functional Consultant', 'Power Platform Functional Consultant']],
+      ['ServiceNow', ['Certified System Administrator (CSA)', 'Certified Implementation Specialist – ITSM', 'Certified Application Developer (CAD)']],
+      ['Project management · Japan national exams', ['PMP', 'IT Strategist (IPA)', 'Project Manager (IPA)']],
+    ]},
     services: { h: 'What I can help with', items: [
       ['Salesforce / ServiceNow development & design review', 'Apex / LWC / Flow implementation, design reviews of existing orgs, and troubleshooting when deployments fail or performance drops.', 'Spot / Ongoing'],
-      ['Cloud design & deployment (AWS / GCP / Azure)', 'Moving business systems to the cloud, architecture design, deployment automation. Including integration with core systems and batch design.', 'Spot / Ongoing'],
+      ['Cloud design & deployment (Azure / AWS / GCP)', 'Moving business systems to the cloud, architecture design, deployment automation. Including integration with core systems and batch design.', 'Spot / Ongoing'],
       ['Project consulting & technical advice', 'Requirements that will not settle, a project with no clear path, an undecided technology choice. Sixteen years of projects behind deciding the next step together.', 'Spot'],
       ['AI adoption: PoC design and rollout', 'Narrowing down what to do first, choosing between OpenAI / Claude / Gemini / DeepSeek and integrating with existing systems, PoC plans, and staying with the team until people on the floor keep using it.', 'Ongoing'],
       ['Japan–China bridge', 'Spec hand-offs, reviews, and progress visibility with development teams in China. Before a Japanese spec gets thrown over the wall as-is.', 'Spot / Ongoing'],
@@ -88,20 +178,59 @@ const c = {
     </aside>
     <div class="content">
       <div class="prose bio">{c.bio.map((p) => <p>{p}</p>)}</div>
+
       <div class="block">
-        <SectionHead num="01" title={c.services.h} />
+        <SectionHead num="01" title={c.career.h} />
+        <div class="tbl-wrap">
+          <table class="tbl career">
+            <thead><tr>{c.career.cols.map((h) => <th>{h}</th>)}</tr></thead>
+            <tbody>{c.career.rows.map(([a, p, d]) => <tr><td class="ja">{a}</td><td class="date">{p}</td><td class="memo">{d}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="block">
+        <SectionHead num="02" title={c.projects.h} desc={c.projects.desc} />
+        <ul>
+          {c.projects.items.map(([ind, name, role, what]) => (
+            <li class="prj">
+              <span class="tag">{ind}</span>
+              <span class="prj-body">
+                <span class="prj-n">{name}</span>
+                <span class="prj-r mono">{role}</span>
+                <span class="prj-d">{what}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="block">
+        <SectionHead num="03" title={c.certs.h} />
+        <div class="certs">
+          {c.certs.groups.map(([g, list]) => (
+            <div class="cert-g">
+              <span class="cert-h">{g}</span>
+              <ul class="cert-l">{(list as string[]).map((x) => <li>{x}</li>)}</ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="block">
+        <SectionHead num="04" title={c.services.h} />
         {c.services.items.map(([n, d, k]) => <div class="svc"><span class="svc-n">{n}</span><span class="svc-d">{d}</span><span class="pill">{k}</span></div>)}
       </div>
       <div class="block">
-        <SectionHead num="02" title={c.flow.h} />
+        <SectionHead num="05" title={c.flow.h} />
         <div class="steps">{c.flow.steps.map(([n, d], i) => <div class="step"><span class="mincho sn">{i + 1}</span><span class="st">{n}</span><span class="sd">{d}</span></div>)}</div>
       </div>
       <div class="block">
-        <SectionHead num="03" title={c.anon.h} desc={c.anon.desc} />
+        <SectionHead num="06" title={c.anon.h} desc={c.anon.desc} />
         <ul class="note rules">{c.anon.rules.map((r) => <li>{r}</li>)}</ul>
       </div>
       <div class="block" id="contact">
-        <SectionHead num="04" title={c.contact.h} />
+        <SectionHead num="07" title={c.contact.h} />
         <div class="contact">
           <p>{c.contact.text}</p>
           <a class="btn primary" href="mailto:"><Icon name="mail" />{c.contact.btn}</a>
@@ -117,11 +246,24 @@ const c = {
   .id { display: flex; flex-direction: column; gap: 4px; }
   .nm { font-size: 24px; font-weight: 600; letter-spacing: 0.08em; }
   .role { font-size: 13px; color: var(--ink-2); } .base { font-size: 13px; color: var(--ink-3); }
-  dl { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 8px 12px; font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
-  dt { color: var(--ink-3); } dd { margin: 0; }
+  dl { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 8px 12px; font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+  dt { color: var(--ink-3); } dd { margin: 0; line-height: 1.7; }
   .content { display: flex; flex-direction: column; gap: 56px; max-width: 760px; }
   .bio { display: flex; flex-direction: column; gap: 16px; }
   .block { display: flex; flex-direction: column; gap: 4px; }
+  .tbl-wrap { overflow-x: auto; padding-top: 12px; }
+  .career td:nth-child(1) { width: 190px; } .career td:nth-child(2) { width: 90px; } .career td.memo { color: var(--ink-2); }
+  .prj { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line-2); align-items: start; }
+  .prj .tag { justify-self: start; margin-top: 2px; }
+  .prj-body { display: flex; flex-direction: column; gap: 4px; }
+  .prj-n { font-size: 15px; font-weight: 700; line-height: 1.6; }
+  .prj-r { font-size: 11px; color: var(--accent); letter-spacing: 0.06em; }
+  .prj-d { font-size: 14px; color: var(--ink-2); line-height: 1.8; }
+  .certs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; padding-top: 20px; }
+  .cert-g { display: flex; flex-direction: column; gap: 8px; }
+  .cert-h { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  .cert-l li { font-size: 13px; color: var(--ink-2); line-height: 1.9; padding-left: 14px; position: relative; }
+  .cert-l li::before { content: ""; position: absolute; left: 0; top: 12px; width: 6px; height: 1px; background: var(--accent); }
   .svc { display: grid; grid-template-columns: 180px minmax(0, 1fr) 120px; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line-2); align-items: start; }
   .svc-n { font-size: 15px; font-weight: 700; } .svc-d { font-size: 14px; color: var(--ink-2); line-height: 1.8; }
   .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-top: 24px; }
@@ -131,5 +273,5 @@ const c = {
   .contact { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; gap: 24px; flex-wrap: wrap; }
   .contact p { font-size: 14px; color: var(--ink-2); line-height: 1.8; }
   @media (max-width: 1100px) { .body { grid-template-columns: 1fr; gap: 48px; } .profile { flex-direction: row; flex-wrap: wrap; align-items: flex-start; } dl { flex: 1 1 260px; border-top: 0; padding-top: 0; } }
-  @media (max-width: 768px) { .body { padding-top: 32px; padding-bottom: 48px; } .svc { grid-template-columns: 1fr; gap: 6px; } .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .photo { width: 120px; height: 144px; } }
+  @media (max-width: 768px) { .body { padding-top: 32px; padding-bottom: 48px; } .svc { grid-template-columns: 1fr; gap: 6px; } .steps, .certs { grid-template-columns: repeat(2, minmax(0, 1fr)); } .photo { width: 120px; height: 144px; } .career td:nth-child(1) { width: 130px; } .prj { grid-template-columns: 1fr; gap: 6px; } }
 </style>
