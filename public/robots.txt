@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ghw307261305.github.io/sitemap-index.xml

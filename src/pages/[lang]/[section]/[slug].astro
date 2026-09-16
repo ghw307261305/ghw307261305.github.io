@@ -1,0 +1,105 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Icon from '../../../components/Icon.astro';
+import { langs, t, fmtDate, type Lang } from '../../../i18n';
+import { getArticles, readingMinutes, type Article } from '../../../i18n/articles';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const lang of langs) {
+    const list = await getArticles(lang);
+    for (const a of list) {
+      const chapter = list.filter((x) => x.data.section === a.data.section);
+      const next = chapter.filter((x) => x.key !== a.key).slice(0, 3);
+      paths.push({ params: { lang, section: a.data.section, slug: a.slug }, props: { a, chapter, next } });
+    }
+  }
+  return paths;
+}
+const lang = Astro.params.lang as Lang;
+const { a, chapter, next } = Astro.props as { a: Article; chapter: Article[]; next: Article[] };
+const s = t(lang);
+const { Content, headings } = await render(a);
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const minutes = readingMinutes(a.body);
+---
+<Base lang={lang} title={a.data.title} description={a.data.description} path={`${a.key}/`}>
+  <div class="wrap crumbs">
+    <a href={`/${lang}/`}>{s.home}</a><span>/</span><a href={`/${lang}/${a.data.section}/`}>{s.nav[a.data.section]}</a><span>/</span><span class="cur">{a.data.tag}</span>
+  </div>
+  <section class="wrap layout">
+    <aside class="left sticky">
+      <span class="rail-h">{s.nav[a.data.section]} › {a.data.tag}</span>
+      <nav class="chap">
+        {chapter.map((c) => <a href={`/${lang}/${c.key}/`} class:list={{ on: c.key === a.key }}>{c.data.title}</a>)}
+      </nav>
+      <a class="more" href={`/${lang}/${a.data.section}/`}>{s.chapterToc}<Icon name="arrow" size={14} /></a>
+    </aside>
+
+    <article>
+      <header class="head">
+        <div class="meta">
+          <span class:list={['tag', { research: a.data.research }]}>{a.data.tag}</span>
+          <span class="date">{s.published} {fmtDate(a.data.date, lang)}</span>
+          {a.data.updated && <span class="date">{s.updatedLabel} {fmtDate(a.data.updated, lang)}</span>}
+          <span class="date">{s.readTime(minutes)}</span>
+        </div>
+        <h1 class="mincho">{a.data.title}</h1>
+        {a.fallback && <p class="fallback">{s.fallbackNotice}</p>}
+        <div class="lead-box" id="solves">
+          <span class="eyebrow accent">{s.solves}</span>
+          <p>{a.data.description}</p>
+        </div>
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+      <div class="next">
+        <span class="mincho nh">{s.next}</span>
+        <ul>
+          {next.map((n) => <li class="row" style="grid-template-columns: 96px minmax(0, 1fr);"><span class="tag">{n.data.tag}</span><a class="t" href={`/${lang}/${n.key}/`}>{n.data.title}</a></li>)}
+        </ul>
+      </div>
+    </article>
+
+    <aside class="right sticky">
+      <div class="toc-box">
+        <span class="rail-h">{s.toc}</span>
+        <nav class="toc">
+          <a href="#solves">{s.solves}</a>
+          {toc.map((h) => <a href={`#${h.slug}`} class:list={{ h3: h.depth === 3 }}>{h.text}</a>)}
+          <a href="#next">{s.next}</a>
+        </nav>
+      </div>
+    </aside>
+  </section>
+</Base>
+<style>
+  .crumbs { display: flex; align-items: center; gap: 10px; padding-top: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line-2); font-size: 12px; color: var(--ink-3); flex-wrap: wrap; }
+  .crumbs a { color: var(--ink-3); } .crumbs .cur { color: var(--ink-2); }
+  .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr) 200px; gap: 64px; padding-top: 48px; padding-bottom: 80px; align-items: start; }
+  .left { display: flex; flex-direction: column; gap: 10px; }
+  .chap { display: flex; flex-direction: column; }
+  .left .more { margin-top: 8px; }
+  article { max-width: 720px; display: flex; flex-direction: column; gap: 36px; }
+  .head { display: flex; flex-direction: column; gap: 18px; }
+  .meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .head h1 { font-size: 36px; line-height: 1.5; font-weight: 600; letter-spacing: 0.02em; }
+  .fallback { font-size: 13px; color: var(--accent); border: 1px solid var(--accent); padding: 8px 14px; display: inline-block; align-self: flex-start; }
+  .eyebrow.accent { color: var(--accent); }
+  .next { border-top: 2px solid var(--ink); padding-top: 20px; display: flex; flex-direction: column; gap: 6px; }
+  .nh { font-size: 18px; font-weight: 600; letter-spacing: 0.08em; }
+  .right { display: flex; flex-direction: column; gap: 32px; }
+  .toc-box { display: flex; flex-direction: column; gap: 10px; }
+  .toc { display: flex; flex-direction: column; }
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: minmax(0, 1fr) 200px; gap: 48px; }
+    .left { display: none; }
+  }
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; gap: 32px; padding-top: 28px; padding-bottom: 48px; }
+    .right { order: -1; } .toc-box { display: none; }
+    .head h1 { font-size: 26px; }
+  }
+</style>

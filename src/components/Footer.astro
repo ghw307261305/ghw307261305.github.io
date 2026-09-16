@@ -1,0 +1,51 @@
+---
+import { t, sections, type Lang } from '../i18n';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const s = t(lang);
+---
+<footer class="ftr">
+  <div class="wrap">
+    <div class="cols">
+      <div class="col about">
+        <a class="name" href={`/${lang}/`}>{s.siteName}</a>
+        <p>{s.siteDescription}</p>
+      </div>
+      <div class="col">
+        <span class="h">{s.footerContent}</span>
+        {sections.map((sec) => <a href={`/${lang}/${sec}/`}>{s.nav[sec]}</a>)}
+      </div>
+      <div class="col">
+        <span class="h">{s.footerPages}</span>
+        <a href={`/${lang}/tools/`}>{s.tools}</a>
+        <a href={`/${lang}/glossary/`}>{s.glossary}</a>
+        <a href={`/${lang}/about/`}>{s.aboutFull}</a>
+      </div>
+      <div class="col">
+        <span class="h">{s.footerSite}</span>
+        <a href={`/${lang}/about/#operator`}>{s.operator}</a>
+        <a href={`/${lang}/disclaimer/`}>{s.disclaimer}</a>
+        <a href={`/${lang}/privacy/`}>{s.privacy}</a>
+        <a href={`/${lang}/about/#contact`}>{s.contact}</a>
+      </div>
+    </div>
+    <div class="bottom">
+      <span class="mono copy">© {new Date().getFullYear()} {s.siteName}</span>
+      <span class="note">{s.footerNote}</span>
+    </div>
+  </div>
+</footer>
+<style>
+  .ftr { border-top: 1px solid var(--line); background: var(--paper-2); padding: 56px 0 32px; margin-top: auto; }
+  .cols { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+  .col a { color: var(--ink-2); font-size: 13px; } .col a:hover { color: var(--accent); }
+  .col .h { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink); }
+  .about .name { font-family: var(--mincho); font-weight: 700; font-size: 18px; letter-spacing: 0.12em; color: var(--ink); }
+  .about p { font-size: 13px; color: var(--ink-2); line-height: 1.8; max-width: 380px; }
+  .bottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .copy { font-size: 11px; color: var(--ink-3); letter-spacing: 0.08em; }
+  .note { font-size: 11px; color: var(--ink-3); }
+  @media (max-width: 900px) { .cols { grid-template-columns: 1fr 1fr; gap: 32px; } .about { grid-column: 1 / -1; } }
+  @media (max-width: 768px) { .ftr { padding: 32px 0 24px; } .bottom { flex-direction: column; align-items: flex-start; gap: 10px; } }
+</style>

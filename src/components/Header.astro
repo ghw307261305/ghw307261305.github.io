@@ -1,0 +1,72 @@
+---
+import Icon from './Icon.astro';
+import LangSwitch from './LangSwitch.astro';
+import { t, sections, type Lang } from '../i18n';
+interface Props { lang: Lang; path: string; available?: Lang[]; }
+const { lang, path, available } = Astro.props;
+const s = t(lang);
+const current = Astro.url.pathname;
+---
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href={`/${lang}/`}>
+      <span class="name">{s.siteName}</span>
+      <span class="sub">{s.siteSub}</span>
+    </a>
+    <nav class="nav" aria-label="main">
+      {sections.map((sec) => <a href={`/${lang}/${sec}/`} aria-current={current.startsWith(`/${lang}/${sec}/`) ? 'page' : undefined}>{s.nav[sec]}</a>)}
+    </nav>
+    <div class="util">
+      <a href={`/${lang}/tools/`}>{s.tools}</a>
+      <a href={`/${lang}/glossary/`}>{s.glossary}</a>
+      <a href={`/${lang}/about/`}>{s.about}</a>
+    </div>
+    <div class="right">
+      <LangSwitch lang={lang} available={available} path={path} />
+      <button class="menu-btn" type="button" aria-label="menu" aria-expanded="false" data-menu-btn><Icon name="menu" size={22} /></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" data-mobile-nav hidden aria-label="mobile">
+    {sections.map((sec) => <a href={`/${lang}/${sec}/`}>{s.nav[sec]}</a>)}
+    <a href={`/${lang}/tools/`} class="sub">{s.tools}</a>
+    <a href={`/${lang}/glossary/`} class="sub">{s.glossary}</a>
+    <a href={`/${lang}/about/`} class="sub">{s.aboutFull}</a>
+  </nav>
+</header>
+<script>
+  const btn = document.querySelector('[data-menu-btn]');
+  const nav = document.querySelector('[data-mobile-nav]') as HTMLElement | null;
+  btn?.addEventListener('click', () => {
+    if (!nav) return;
+    nav.hidden = !nav.hidden;
+    btn.setAttribute('aria-expanded', String(!nav.hidden));
+  });
+</script>
+<style>
+  .hdr { border-bottom: 1px solid var(--line); background: var(--paper); position: relative; }
+  .hdr-in { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 24px; }
+  .brand { display: flex; align-items: baseline; gap: 12px; color: var(--ink); }
+  .brand .name { font-family: var(--mincho); font-weight: 700; font-size: 18px; letter-spacing: 0.12em; }
+  .brand .sub { font-size: 11px; color: var(--ink-3); letter-spacing: 0.08em; }
+  .nav { display: flex; align-items: center; gap: 36px; }
+  .nav a { color: var(--ink); font-weight: 700; font-size: 14px; letter-spacing: 0.04em; }
+  .nav a:hover, .nav a[aria-current] { color: var(--accent); }
+  .util { display: flex; align-items: center; gap: 22px; }
+  .util a { color: var(--ink-2); font-size: 13px; } .util a:hover { color: var(--accent); }
+  .right { display: flex; align-items: center; gap: 18px; }
+  .menu-btn { display: none; background: none; border: 0; padding: 8px; margin-right: -8px; color: var(--ink); cursor: pointer; }
+  .mobile-nav { display: none; }
+  @media (max-width: 1100px) {
+    .brand .sub { display: none; }
+    .nav { gap: 22px; } .util { display: none; }
+  }
+  @media (max-width: 768px) {
+    .hdr-in { height: 56px; }
+    .nav, .util { display: none; }
+    .menu-btn { display: inline-flex; }
+    .mobile-nav { display: flex; flex-direction: column; border-top: 1px solid var(--line); padding: 8px 20px 20px; background: var(--paper); }
+    .mobile-nav[hidden] { display: none; }
+    .mobile-nav a { padding: 12px 0; border-bottom: 1px solid var(--line-2); color: var(--ink); font-weight: 700; font-size: 15px; }
+    .mobile-nav a.sub { font-weight: 400; color: var(--ink-2); font-size: 14px; }
+  }
+</style>

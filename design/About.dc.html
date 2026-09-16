@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    html, body { margin: 0; background: #F7F5F0; color: #1B1A17; }
+    body { font-family: 'BIZ UDPGothic', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif; font-size: 15px; line-height: 1.8; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+    a { color: #2B4A6F; text-decoration: none; } a:hover { color: #B5432A; }
+    h1, h2, h3, h4, p, ul, ol { margin: 0; } ul, ol { padding: 0; list-style: none; }
+    .mincho { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif; }
+    .mono { font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace; }
+    .eyebrow { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8A867E; }
+    .grid-paper { background-color: #F7F5F0; background-image: linear-gradient(rgba(27,26,23,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(27,26,23,0.055) 1px, transparent 1px); background-size: 24px 24px; }
+    .nav a { color: #1B1A17; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; } .nav a:hover { color: #B5432A; }
+    .util a { color: #514E48; font-size: 13px; } .util a:hover { color: #B5432A; }
+    .brand { display: flex; align-items: baseline; gap: 12px; color: #1B1A17; }
+    .brand .name { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; }
+    .brand .sub { font-size: 11px; color: #8A867E; letter-spacing: 0.08em; }
+    .tag { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border: 1px solid #DED9CF; border-radius: 2px; font-size: 11px; color: #514E48; letter-spacing: 0.04em; white-space: nowrap; background: #FFFFFF; }
+    .tag.research { border-color: #B5432A; color: #B5432A; }
+    .date { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 12px; color: #8A867E; letter-spacing: 0.04em; }
+    .row { display: grid; grid-template-columns: 56px 96px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #E9E5DC; }
+    .row .t { color: #1B1A17; font-size: 15px; line-height: 1.6; } .row .t:hover { color: #B5432A; }
+    .sec-head { display: flex; align-items: baseline; justify-content: space-between; border-top: 2px solid #1B1A17; padding-top: 12px; }
+    .sec-head h2 { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-size: 22px; font-weight: 600; letter-spacing: 0.06em; }
+    .sec-head .num { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 12px; color: #B5432A; letter-spacing: 0.1em; }
+    .sec-head .desc { font-size: 12px; color: #8A867E; }
+    .more { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #514E48; }
+    .ad { border: 1px dashed #C9C3B6; background: repeating-linear-gradient(45deg, transparent 0 10px, rgba(27,26,23,0.03) 10px 20px); color: #8A867E; font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.12em; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.6; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 22px; border: 1px solid #1B1A17; border-radius: 2px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: #1B1A17; background: transparent; }
+    .btn.primary { background: #1B1A17; color: #F7F5F0; } .btn.primary:hover { background: #B5432A; border-color: #B5432A; color: #FFFFFF; }
+    .btn:hover { color: #B5432A; border-color: #B5432A; }
+    .card { background: #FFFFFF; border: 1px solid #E4DFD5; border-radius: 2px; }
+    .rail-h { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.16em; color: #8A867E; text-transform: uppercase; }
+    .footer a { color: #514E48; font-size: 13px; } .footer a:hover { color: #B5432A; }
+    .footer .h { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #1B1A17; }
+    .lang { display: inline-flex; border: 1px solid #DED9CF; border-radius: 2px; overflow: hidden; }
+    .lang span { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; padding: 3px 8px; color: #8A867E; }
+    .lang span.on { background: #1B1A17; color: #F7F5F0; }
+    .lead { border: 1px solid #DED9CF; border-left: 3px solid #1B1A17; background: #FFFFFF; padding: 20px 24px; }
+    .prose p { font-size: 16px; line-height: 2; color: #1B1A17; }
+    .prose h2 { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-size: 24px; font-weight: 600; letter-spacing: 0.04em; line-height: 1.5; }
+    .prose h3 { font-size: 16px; font-weight: 700; letter-spacing: 0.02em; }
+    .code { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 13px; line-height: 1.75; background: #1E1D1A; color: #E8E4DA; padding: 18px 22px; border-radius: 2px; white-space: pre; overflow: hidden; }
+    .code .c { color: #8A867E; } .code .k { color: #E0A458; } .code .s { color: #9BC48D; }
+    .step { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 20px; }
+    .step .n { font-family: 'Shippori Mincho', serif; font-size: 26px; color: #B5432A; line-height: 1.2; }
+    .toc a { display: block; font-size: 13px; color: #514E48; line-height: 1.6; padding: 6px 0 6px 14px; border-left: 2px solid #E9E5DC; }
+    .toc a.on { border-left-color: #B5432A; color: #1B1A17; font-weight: 700; }
+    .chap a { display: block; font-size: 13px; color: #514E48; line-height: 1.6; padding: 8px 0; border-bottom: 1px solid #E9E5DC; }
+    .chap a.on { color: #1B1A17; font-weight: 700; }
+    .note li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.9; }
+    .note li::before { content: ""; position: absolute; left: 0; top: 13px; width: 8px; height: 1px; background: #B5432A; }
+    table.tbl { width: 100%; border-collapse: collapse; }
+    .tbl th { text-align: left; font-size: 11px; letter-spacing: 0.12em; color: #8A867E; font-weight: 400; font-family: 'IBM Plex Mono', Menlo, monospace; padding: 0 16px 10px 0; border-bottom: 2px solid #1B1A17; }
+    .tbl td { padding: 14px 16px 14px 0; border-bottom: 1px solid #E9E5DC; vertical-align: top; font-size: 14px; line-height: 1.7; }
+    .tbl td.ja { font-weight: 700; color: #1B1A17; }
+    .tbl td.zh { color: #1B1A17; } .tbl td.en { color: #514E48; } .tbl td.memo { color: #8A867E; font-size: 13px; }
+    .pill { display: inline-flex; font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.1em; padding: 2px 6px; border: 1px solid #DED9CF; border-radius: 2px; color: #514E48; }
+    .pill.off { color: #C9C3B6; border-style: dashed; }
+  </style>
+</helmet>
+<div style="width: 1440px; min-height: 1700px; background: #F7F5F0; display: flex; flex-direction: column;">
+  <header style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 56px; border-bottom: 1px solid #DED9CF; background: #F7F5F0;">
+  <a class="brand" href="#">
+    <span class="name">ONSITE LAB</span>
+    <span class="sub">現場の技術ノート</span>
+  </a>
+  <nav class="nav" style="display: flex; align-items: center; gap: 36px;">
+    <a href="#">技術</a>
+    <a href="#">マネジメント</a>
+    <a href="#">案件の記録</a>
+    <a href="#">随想</a>
+  </nav>
+  <div class="util" style="display: flex; align-items: center; gap: 22px;">
+    <a href="#">ツール・テンプレート</a>
+    <a href="#">用語対照</a>
+    <a href="#">About</a>
+    <span style="width: 1px; height: 18px; background: #DED9CF;"></span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#514E48" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+    <span class="lang"><span class="on">JA</span><span>ZH</span><span>EN</span></span>
+  </div>
+</header>
+
+  <section class="grid-paper" style="border-bottom: 1px solid #DED9CF; padding: 64px 56px 48px; display: flex; justify-content: space-between; align-items: flex-end;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <span class="eyebrow">About</span>
+      <h1 class="mincho" style="font-size: 36px; font-weight: 600; letter-spacing: 0.04em; line-height: 1.4;">運営者と、依頼できること</h1>
+    </div>
+    <span class="lang"><span class="on">日本語</span><span>中文</span><span>English</span></span>
+  </section>
+
+  <section style="display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 96px; padding: 64px 56px 80px; align-items: start;">
+    <aside style="display: flex; flex-direction: column; gap: 20px; position: sticky; top: 24px;">
+      <div style="width: 200px; height: 240px; background: #E4DFD5; border: 1px solid #D5CFC3;"></div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <span class="mincho" style="font-size: 24px; font-weight: 600; letter-spacing: 0.08em;">[著者名]</span>
+        <span style="font-size: 13px; color: #514E48;">Salesforce 開発者 / プロジェクトマネージャー</span>
+        <span style="font-size: 13px; color: #8A867E;">東京 · 日本語 / 中国語 / 英語</span>
+      </div>
+      <dl style="margin: 0; display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 8px 12px; font-size: 13px; border-top: 1px solid #DED9CF; padding-top: 16px;">
+        <dt style="color: #8A867E;">領域</dt><dd style="margin: 0; color: #1B1A17;">Salesforce · Fabric / Power BI · AI導入</dd>
+        <dt style="color: #8A867E;">立場</dt><dd style="margin: 0; color: #1B1A17;">開発と PM の両方。二次請け側の経験が長い</dd>
+        <dt style="color: #8A867E;">連絡</dt><dd style="margin: 0; color: #1B1A17;">[メールアドレス]</dd>
+      </dl>
+    </aside>
+
+    <div style="display: flex; flex-direction: column; gap: 56px; max-width: 760px;">
+      <div class="prose" style="display: flex; flex-direction: column; gap: 16px;">
+        <p>日本企業の業務システム案件を、開発者として、またPMとして現場で動かしています。中国語ネイティブ、日本語での客先折衝が主戦場です。得意なのは、要件が固まりきらないまま動き出した案件を、それでも壊さずに前へ進めることです。</p>
+        <p>このサイトには、案件で実際に起きた問題と、そのとき効いた対処だけを書いています。書けるのは、客先のPCの前で自分が手を動かしたことだけです。</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div class="sec-head"><div style="display: flex; align-items: baseline; gap: 12px;"><span class="num">01</span><h2>依頼できること</h2></div></div>
+        <div style="display: grid; grid-template-columns: 180px minmax(0, 1fr) 120px; gap: 16px; padding: 18px 0; border-bottom: 1px solid #E9E5DC; align-items: start;">
+          <span style="font-size: 15px; font-weight: 700;">Salesforce 開発・設計レビュー</span>
+          <span style="font-size: 14px; color: #514E48; line-height: 1.8;">Apex / LWC / フローの実装、既存組織の設計レビュー、デプロイが通らない・パフォーマンスが出ないときの切り分け。</span>
+          <span class="pill">スポット / 継続</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 180px minmax(0, 1fr) 120px; gap: 16px; padding: 18px 0; border-bottom: 1px solid #E9E5DC; align-items: start;">
+          <span style="font-size: 15px; font-weight: 700;">Fabric / Power BI のデータ基盤</span>
+          <span style="font-size: 14px; color: #514E48; line-height: 1.8;">Salesforce や基幹系からのデータ連携、夜間バッチとリフレッシュの設計、レポートが止まる原因の特定。</span>
+          <span class="pill">スポット / 継続</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 180px minmax(0, 1fr) 120px; gap: 16px; padding: 18px 0; border-bottom: 1px solid #E9E5DC; align-items: start;">
+          <span style="font-size: 15px; font-weight: 700;">AI導入の PoC 設計と現場定着</span>
+          <span style="font-size: 14px; color: #514E48; line-height: 1.8;">「まず何をやるか」の絞り込み、PoC の計画書、現場の担当者が使い続けられる形にするまでの伴走。</span>
+          <span class="pill">継続</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 180px minmax(0, 1fr) 120px; gap: 16px; padding: 18px 0; border-bottom: 1px solid #E9E5DC; align-items: start;">
+          <span style="font-size: 15px; font-weight: 700;">日中ブリッジ</span>
+          <span style="font-size: 14px; color: #514E48; line-height: 1.8;">中国側の開発チームとの仕様連携、レビュー、進捗の可視化。日本語の仕様書をそのまま渡して失敗する前に。</span>
+          <span class="pill">スポット / 継続</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div class="sec-head"><div style="display: flex; align-items: baseline; gap: 12px;"><span class="num">02</span><h2>依頼の流れ</h2></div></div>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-top: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 8px;"><span class="mincho" style="font-size: 26px; color: #B5432A;">1</span><span style="font-size: 14px; font-weight: 700;">お問い合わせ</span><span style="font-size: 13px; color: #514E48; line-height: 1.7;">困っていることを、箇条書きで構いません。</span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px;"><span class="mincho" style="font-size: 26px; color: #B5432A;">2</span><span style="font-size: 14px; font-weight: 700;">30 分の相談</span><span style="font-size: 13px; color: #514E48; line-height: 1.7;">無料。ここで解決することも多いです。</span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px;"><span class="mincho" style="font-size: 26px; color: #B5432A;">3</span><span style="font-size: 14px; font-weight: 700;">見積と合意</span><span style="font-size: 13px; color: #514E48; line-height: 1.7;">範囲と成果物を文章で確定します。</span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px;"><span class="mincho" style="font-size: 26px; color: #B5432A;">4</span><span style="font-size: 14px; font-weight: 700;">着手</span><span style="font-size: 13px; color: #514E48; line-height: 1.7;">週次で進捗を報告します。</span></div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div class="sec-head"><div style="display: flex; align-items: baseline; gap: 12px;"><span class="num">03</span><h2>案件の記録について</h2><span class="desc">匿名化の方針</span></div></div>
+        <ul class="note" style="display: flex; flex-direction: column; gap: 2px; padding-top: 16px;">
+          <li>企業名・製品名・固有の業務用語は書きません。業種と規模感のみ記載します。</li>
+          <li>時期は前後させ、複数案件の要素を組み合わせることがあります。特定の案件を再構成できる形にはしません。</li>
+          <li>書くのは技術的な判断と進め方です。個人の評価や、契約条件に関わることは書きません。</li>
+          <li>掲載後に関係者から申し出があれば、内容を修正または取り下げます。</li>
+        </ul>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div class="sec-head"><div style="display: flex; align-items: baseline; gap: 12px;"><span class="num">04</span><h2>連絡</h2></div></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 20px; gap: 24px;">
+          <p style="font-size: 14px; color: #514E48; line-height: 1.8;">日本語・中国語・英語のいずれでも。通常 2 営業日以内に返信します。</p>
+          <a class="btn primary" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"></rect><polyline points="3 7 12 13 21 7"></polyline></svg>メールで問い合わせる</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer" style="border-top: 1px solid #DED9CF; background: #F1EEE6; padding: 56px 56px 32px;">
+  <div style="display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <a class="brand" href="#"><span class="name">ONSITE LAB</span></a>
+      <p style="font-size: 13px; color: #514E48; line-height: 1.8; max-width: 380px;">日本企業のIT案件の現場で、実際に起きたことと効いた対処を、再現できる手順として残しています。日本語を主に、中国語・英語でも一部を公開しています。</p>
+      <span class="lang"><span class="on">日本語</span><span>中文</span><span>English</span></span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span class="h">コンテンツ</span>
+      <a href="#">技術</a><a href="#">マネジメント</a><a href="#">案件の記録</a><a href="#">随想</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span class="h">ページ</span>
+      <a href="#">ツール・テンプレート</a><a href="#">日中IT用語対照</a><a href="#">About・依頼できること</a><a href="#">更新履歴</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span class="h">サイトについて</span>
+      <a href="#">運営者情報</a><a href="#">免責事項</a><a href="#">プライバシーポリシー</a><a href="#">お問い合わせ</a>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 44px; padding-top: 18px; border-top: 1px solid #DED9CF;">
+    <span class="mono" style="font-size: 11px; color: #8A867E; letter-spacing: 0.08em;">© 2026 ONSITE LAB</span>
+    <span style="font-size: 11px; color: #8A867E;">本サイトは広告（Google AdSense 等）を掲載しています。案件の記録は、すべて匿名化のうえ掲載しています。</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+</body>
+</html>

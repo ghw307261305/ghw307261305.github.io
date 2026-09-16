@@ -1,0 +1,13 @@
+---
+import Icon from './Icon.astro';
+interface Props { num?: string; title: string; desc?: string; href?: string; moreLabel?: string; as?: 'h1' | 'h2'; }
+const { num, title, desc, href, moreLabel, as: Tag = 'h2' } = Astro.props;
+---
+<div class="sec-head">
+  <div class="lead">
+    {num && <span class="num">{num}</span>}
+    <Tag>{title}</Tag>
+    {desc && <span class="desc">{desc}</span>}
+  </div>
+  {href && moreLabel && <a class="more" href={href}>{moreLabel}<Icon name="arrow" size={14} /></a>}
+</div>

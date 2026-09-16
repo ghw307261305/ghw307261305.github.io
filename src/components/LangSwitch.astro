@@ -1,0 +1,10 @@
+---
+import { langs, langShort, type Lang } from '../i18n';
+interface Props { lang: Lang; available?: Lang[]; path: string; }
+const { lang, available = langs, path } = Astro.props;
+---
+<span class="lang">
+  {available.map((l) => l === lang
+    ? <span class="on" aria-current="true">{langShort(l)}</span>
+    : <a href={`/${l}/${path}`} hreflang={l} lang={l}>{langShort(l)}</a>)}
+</span>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    html, body { margin: 0; background: #F7F5F0; color: #1B1A17; }
+    body { font-family: 'BIZ UDPGothic', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif; font-size: 15px; line-height: 1.8; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+    a { color: #2B4A6F; text-decoration: none; } a:hover { color: #B5432A; }
+    h1, h2, h3, h4, p, ul, ol { margin: 0; } ul, ol { padding: 0; list-style: none; }
+    .mincho { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif; }
+    .mono { font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace; }
+    .eyebrow { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8A867E; }
+    .grid-paper { background-color: #F7F5F0; background-image: linear-gradient(rgba(27,26,23,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(27,26,23,0.055) 1px, transparent 1px); background-size: 24px 24px; }
+    .nav a { color: #1B1A17; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; } .nav a:hover { color: #B5432A; }
+    .util a { color: #514E48; font-size: 13px; } .util a:hover { color: #B5432A; }
+    .brand { display: flex; align-items: baseline; gap: 12px; color: #1B1A17; }
+    .brand .name { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; }
+    .brand .sub { font-size: 11px; color: #8A867E; letter-spacing: 0.08em; }
+    .tag { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border: 1px solid #DED9CF; border-radius: 2px; font-size: 11px; color: #514E48; letter-spacing: 0.04em; white-space: nowrap; background: #FFFFFF; }
+    .tag.research { border-color: #B5432A; color: #B5432A; }
+    .date { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 12px; color: #8A867E; letter-spacing: 0.04em; }
+    .row { display: grid; grid-template-columns: 56px 96px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #E9E5DC; }
+    .row .t { color: #1B1A17; font-size: 15px; line-height: 1.6; } .row .t:hover { color: #B5432A; }
+    .sec-head { display: flex; align-items: baseline; justify-content: space-between; border-top: 2px solid #1B1A17; padding-top: 12px; }
+    .sec-head h2 { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-size: 22px; font-weight: 600; letter-spacing: 0.06em; }
+    .sec-head .num { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 12px; color: #B5432A; letter-spacing: 0.1em; }
+    .sec-head .desc { font-size: 12px; color: #8A867E; }
+    .more { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #514E48; }
+    .ad { border: 1px dashed #C9C3B6; background: repeating-linear-gradient(45deg, transparent 0 10px, rgba(27,26,23,0.03) 10px 20px); color: #8A867E; font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.12em; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.6; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 22px; border: 1px solid #1B1A17; border-radius: 2px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: #1B1A17; background: transparent; }
+    .btn.primary { background: #1B1A17; color: #F7F5F0; } .btn.primary:hover { background: #B5432A; border-color: #B5432A; color: #FFFFFF; }
+    .btn:hover { color: #B5432A; border-color: #B5432A; }
+    .card { background: #FFFFFF; border: 1px solid #E4DFD5; border-radius: 2px; }
+    .rail-h { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.16em; color: #8A867E; text-transform: uppercase; }
+    .footer a { color: #514E48; font-size: 13px; } .footer a:hover { color: #B5432A; }
+    .footer .h { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #1B1A17; }
+    .lang { display: inline-flex; border: 1px solid #DED9CF; border-radius: 2px; overflow: hidden; }
+    .lang span { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; padding: 3px 8px; color: #8A867E; }
+    .lang span.on { background: #1B1A17; color: #F7F5F0; }
+    .lead { border: 1px solid #DED9CF; border-left: 3px solid #1B1A17; background: #FFFFFF; padding: 20px 24px; }
+    .prose p { font-size: 16px; line-height: 2; color: #1B1A17; }
+    .prose h2 { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-size: 24px; font-weight: 600; letter-spacing: 0.04em; line-height: 1.5; }
+    .prose h3 { font-size: 16px; font-weight: 700; letter-spacing: 0.02em; }
+    .code { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 13px; line-height: 1.75; background: #1E1D1A; color: #E8E4DA; padding: 18px 22px; border-radius: 2px; white-space: pre; overflow: hidden; }
+    .code .c { color: #8A867E; } .code .k { color: #E0A458; } .code .s { color: #9BC48D; }
+    .step { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 20px; }
+    .step .n { font-family: 'Shippori Mincho', serif; font-size: 26px; color: #B5432A; line-height: 1.2; }
+    .toc a { display: block; font-size: 13px; color: #514E48; line-height: 1.6; padding: 6px 0 6px 14px; border-left: 2px solid #E9E5DC; }
+    .toc a.on { border-left-color: #B5432A; color: #1B1A17; font-weight: 700; }
+    .chap a { display: block; font-size: 13px; color: #514E48; line-height: 1.6; padding: 8px 0; border-bottom: 1px solid #E9E5DC; }
+    .chap a.on { color: #1B1A17; font-weight: 700; }
+    .note li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.9; }
+    .note li::before { content: ""; position: absolute; left: 0; top: 13px; width: 8px; height: 1px; background: #B5432A; }
+    table.tbl { width: 100%; border-collapse: collapse; }
+    .tbl th { text-align: left; font-size: 11px; letter-spacing: 0.12em; color: #8A867E; font-weight: 400; font-family: 'IBM Plex Mono', Menlo, monospace; padding: 0 16px 10px 0; border-bottom: 2px solid #1B1A17; }
+    .tbl td { padding: 14px 16px 14px 0; border-bottom: 1px solid #E9E5DC; vertical-align: top; font-size: 14px; line-height: 1.7; }
+    .tbl td.ja { font-weight: 700; color: #1B1A17; }
+    .tbl td.zh { color: #1B1A17; } .tbl td.en { color: #514E48; } .tbl td.memo { color: #8A867E; font-size: 13px; }
+    .pill { display: inline-flex; font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.1em; padding: 2px 6px; border: 1px solid #DED9CF; border-radius: 2px; color: #514E48; }
+    .pill.off { color: #C9C3B6; border-style: dashed; }
+  </style>
+</helmet>

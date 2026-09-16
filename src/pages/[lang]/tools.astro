@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { langs, t, fmtDate, type Lang } from '../../i18n';
+export function getStaticPaths() { return langs.map((lang) => ({ params: { lang } })); }
+const lang = Astro.params.lang as Lang;
+const s = t(lang);
+const tools = (await getCollection('tools')).sort((a, b) => b.data.updated.getTime() - a.data.updated.getTime());
+const c = {
+  ja: { eyebrow: 'Tools & Templates', intro: '案件で実際に使っているファイルを、そのまま置いています。商用・社内利用ともに自由です。改変して使ってください。出典表記は不要です。', cols: ['名称', '用途', '形式', '言語', '更新'], all: 'すべて', cats: { report: '報告・管理', salesforce: 'Salesforce', ai: 'AI導入', bridge: '日中チーム' }, note: 'ファイルは案件の内容を含まない形に作り直しています。利用によって生じた結果について、当サイトは責任を負いません。詳細は免責事項をご覧ください。' },
+  zh: { eyebrow: 'Tools & Templates', intro: '这里放的是项目里实际在用的文件。商用、公司内部使用都可以，随意改。不需要注明出处。', cols: ['名称', '用途', '格式', '语言', '更新'], all: '全部', cats: { report: '报告・管理', salesforce: 'Salesforce', ai: 'AI导入', bridge: '中日团队' }, note: '文件已重新制作，不含任何案件内容。使用后产生的结果，本站不承担责任。详见免责声明。' },
+  en: { eyebrow: 'Tools & Templates', intro: 'Files I actually use on projects, as-is. Free for commercial and internal use. Modify freely. No attribution needed.', cols: ['Name', 'Purpose', 'Format', 'Languages', 'Updated'], all: 'All', cats: { report: 'Reporting & management', salesforce: 'Salesforce', ai: 'AI adoption', bridge: 'JP–CN teams' }, note: 'Files have been rebuilt so they contain no project content. This site accepts no liability for outcomes of their use. See the disclaimer for details.' },
+}[lang];
+---
+<Base lang={lang} title={s.tools} description={c.intro} path="tools/">
+  <section class="grid-paper">
+    <div class="wrap page-hero">
+      <div class="intro"><span class="eyebrow">{c.eyebrow}</span><h1>{s.tools}</h1><p>{c.intro}</p></div>
+    </div>
+  </section>
+  <section class="wrap body">
+    <div class="tags"><span class="tag on">{c.all}</span>{Object.values(c.cats).map((n) => <span class="tag">{n}</span>)}</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr>{c.cols.map((h) => <th>{h}</th>)}<th></th></tr></thead>
+        <tbody>
+          {tools.map((tl) => (
+            <tr id={tl.data.id}>
+              <td class="ja">{tl.data.name[lang]}</td>
+              <td>{tl.data.description[lang]}</td>
+              <td><span class="pill">{tl.data.format}</span></td>
+              <td><div class="langs">{langs.map((l) => <span class:list={['pill', { off: !tl.data.langs.includes(l) }]}>{l.toUpperCase()}</span>)}</div></td>
+              <td class="date">{fmtDate(tl.data.updated, lang)}</td>
+              <td><a href={tl.data.file} download aria-label="download"><Icon name="download" size={18} /></a></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="foot">
+      <p>{c.note}</p>
+    </div>
+  </section>
+</Base>
+<style>
+  .body { padding-top: 48px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 40px; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; } .tags .tag { height: 28px; padding: 0 12px; }
+  .tbl-wrap { overflow-x: auto; }
+  .tbl td:first-child { width: 300px; } .langs { display: flex; gap: 4px; }
+  .foot { }
+  .foot p { font-size: 13px; color: var(--ink-3); line-height: 1.8; max-width: 640px; }
+  @media (max-width: 768px) { .body { padding-top: 28px; padding-bottom: 48px; gap: 24px; } .tbl td:first-child { width: auto; min-width: 180px; } }
+</style>

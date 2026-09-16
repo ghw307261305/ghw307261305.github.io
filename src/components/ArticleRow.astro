@@ -1,0 +1,14 @@
+---
+import type { Article } from '../i18n/articles';
+import { fmtShort, fmtDate, type Lang } from '../i18n';
+interface Props { a: Article; lang: Lang; wide?: boolean; }
+const { a, lang, wide = false } = Astro.props;
+---
+<li class:list={['row', { wide }]}>
+  <span class="date">{wide ? fmtDate(a.data.date, lang) : fmtShort(a.data.date)}</span>
+  <span class:list={['tag', { research: a.data.research }]}>{a.data.tag}</span>
+  <span>
+    <a class="t" href={`/${lang}/${a.key}/`}>{a.data.title}</a>
+    {wide && <p class="d">{a.data.description}</p>}
+  </span>
+</li>

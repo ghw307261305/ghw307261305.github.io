@@ -1,0 +1,38 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ArticleRow from '../../../components/ArticleRow.astro';
+import { langs, sections, t, type Lang, type Section } from '../../../i18n';
+import { getArticles } from '../../../i18n/articles';
+
+export function getStaticPaths() {
+  return langs.flatMap((lang) => sections.map((section) => ({ params: { lang, section } })));
+}
+const lang = Astro.params.lang as Lang;
+const section = Astro.params.section as Section;
+const s = t(lang);
+const list = await getArticles(lang, section);
+const tags = [...new Set(list.map((a) => a.data.tag))];
+const num = String(sections.indexOf(section) + 1).padStart(2, '0');
+---
+<Base lang={lang} title={s.nav[section]} description={s.sectionDesc[section]} path={`${section}/`}>
+  <section class="grid-paper">
+    <div class="wrap page-hero">
+      <div class="intro">
+        <span class="eyebrow">{num} · {s.articlesCount(list.length)}</span>
+        <h1>{s.nav[section]}</h1>
+        <p>{s.sectionDesc[section]}</p>
+      </div>
+    </div>
+  </section>
+  <section class="wrap body">
+    <div class="list">
+      <div class="tags"><span class="tag on">All</span>{tags.map((tg) => <span class="tag">{tg}</span>)}</div>
+      <ul>{list.map((a) => <ArticleRow a={a} lang={lang} wide />)}</ul>
+    </div>
+  </section>
+</Base>
+<style>
+  .body { max-width: 900px; padding-top: 40px; padding-bottom: 80px; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tags .tag { height: 28px; padding: 0 12px; }
+</style>

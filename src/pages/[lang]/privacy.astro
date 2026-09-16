@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { langs, type Lang } from '../../i18n';
+export function getStaticPaths() { return langs.map((lang) => ({ params: { lang } })); }
+const lang = Astro.params.lang as Lang;
+const c = {
+  ja: { title: 'プライバシーポリシー', updated: '最終更新：2026年9月16日', body: [
+    ['アクセス解析について', '当サイトはアクセス解析ツールを利用することがあります。解析ツールはトラフィックデータの収集のために Cookie を使用しますが、このデータは匿名で収集されており、個人を特定するものではありません。'],
+    ['お問い合わせで取得する情報', 'お問い合わせの際にいただいた氏名・メールアドレス・内容は、返信および依頼内容の検討のためにのみ使用し、第三者に提供することはありません。'],
+    ['ポリシーの変更', '本ポリシーは法令の変更や運営上の必要に応じて改定することがあります。改定後の内容は当ページに掲載した時点から有効とします。'],
+  ]},
+  zh: { title: '隐私政策', updated: '最后更新：2026年9月16日', body: [
+    ['关于访问统计', '本站可能使用访问统计工具。统计工具通过 Cookie 收集流量数据，这些数据是匿名的，不能识别个人。'],
+    ['通过联系表单获取的信息', '联系时提供的姓名、邮箱和内容，仅用于回复和评估委托内容，不会提供给第三方。'],
+    ['政策变更', '本政策可能因法律变化或运营需要而修订。修订后的内容自发布于本页之时起生效。'],
+  ]},
+  en: { title: 'Privacy Policy', updated: 'Last updated: September 16, 2026', body: [
+    ['Analytics', 'This site may use analytics tools. These tools use cookies to collect traffic data; the data is anonymous and does not identify individuals.'],
+    ['Information from contact requests', 'Names, email addresses and message content received through contact requests are used only to reply and to assess the request, and are never shared with third parties.'],
+    ['Changes to this policy', 'This policy may be revised for legal or operational reasons. Revisions take effect when posted on this page.'],
+  ]},
+}[lang];
+---
+<Base lang={lang} title={c.title} path="privacy/">
+  <section class="grid-paper"><div class="wrap page-hero"><div class="intro"><span class="eyebrow">Legal</span><h1>{c.title}</h1><p>{c.updated}</p></div></div></section>
+  <section class="wrap legal prose">
+    {c.body.map(([h, p]) => <><h2>{h}</h2><p>{p}</p></>)}
+  </section>
+</Base>
+<style>.legal { max-width: 760px; padding-top: 24px; padding-bottom: 80px; }</style>

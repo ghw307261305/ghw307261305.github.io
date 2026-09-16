@@ -1,0 +1,120 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { langs, t, type Lang } from '../../i18n';
+export function getStaticPaths() { return langs.map((lang) => ({ params: { lang } })); }
+const lang = Astro.params.lang as Lang;
+const s = t(lang);
+
+const c = {
+  ja: {
+    eyebrow: 'About', title: '運営者と、依頼できること',
+    role: 'Salesforce 開発者 / プロジェクトマネージャー', base: '東京 · 日本語 / 中国語 / 英語',
+    dl: [['領域', 'Salesforce · Fabric / Power BI · AI導入'], ['立場', '開発と PM の両方。二次請け側の経験が長い'], ['連絡', '[メールアドレス]']],
+    bio: ['日本企業の業務システム案件を、開発者として、またPMとして現場で動かしています。中国語ネイティブ、日本語での客先折衝が主戦場です。得意なのは、要件が固まりきらないまま動き出した案件を、それでも壊さずに前へ進めることです。', 'このサイトには、案件で実際に起きた問題と、そのとき効いた対処だけを書いています。書けるのは、客先のPCの前で自分が手を動かしたことだけです。'],
+    services: { h: '依頼できること', items: [
+      ['Salesforce 開発・設計レビュー', 'Apex / LWC / フローの実装、既存組織の設計レビュー、デプロイが通らない・パフォーマンスが出ないときの切り分け。', 'スポット / 継続'],
+      ['Fabric / Power BI のデータ基盤', 'Salesforce や基幹系からのデータ連携、夜間バッチとリフレッシュの設計、レポートが止まる原因の特定。', 'スポット / 継続'],
+      ['AI導入の PoC 設計と現場定着', '「まず何をやるか」の絞り込み、PoC の計画書、現場の担当者が使い続けられる形にするまでの伴走。', '継続'],
+      ['日中ブリッジ', '中国側の開発チームとの仕様連携、レビュー、進捗の可視化。日本語の仕様書をそのまま渡して失敗する前に。', 'スポット / 継続'],
+    ]},
+    flow: { h: '依頼の流れ', steps: [['お問い合わせ', '困っていることを、箇条書きで構いません。'], ['30 分の相談', '無料。ここで解決することも多いです。'], ['見積と合意', '範囲と成果物を文章で確定します。'], ['着手', '週次で進捗を報告します。']] },
+    anon: { h: '案件の記録について', desc: '匿名化の方針', rules: ['企業名・製品名・固有の業務用語は書きません。業種と規模感のみ記載します。', '時期は前後させ、複数案件の要素を組み合わせることがあります。特定の案件を再構成できる形にはしません。', '書くのは技術的な判断と進め方です。個人の評価や、契約条件に関わることは書きません。', '掲載後に関係者から申し出があれば、内容を修正または取り下げます。'] },
+    contact: { h: '連絡', text: '日本語・中国語・英語のいずれでも。通常 2 営業日以内に返信します。', btn: 'メールで問い合わせる' },
+  },
+  zh: {
+    eyebrow: 'About', title: '关于我，以及可以委托的事',
+    role: 'Salesforce 开发者 / 项目经理', base: '东京 · 日语 / 中文 / 英语',
+    dl: [['领域', 'Salesforce · Fabric / Power BI · AI导入'], ['立场', '开发和 PM 都做。长期在二包一侧'], ['联系', '[邮箱地址]']],
+    bio: ['我以开发者和 PM 的双重身份，在一线推进日本企业的业务系统项目。中文母语，日常用日语和客户沟通。擅长的是：需求还没完全定下来项目就已经启动的情况下，依然把它稳稳地往前推。', '这个网站只写项目里真实发生过的问题，和当时真正有效的处理办法。能写的，只有我自己在客户电脑前亲手做过的事。'],
+    services: { h: '可以委托的事', items: [
+      ['Salesforce 开发・设计评审', 'Apex / LWC / Flow 实现，既有组织的设计评审，部署不通过、性能上不去时的问题定位。', '单次 / 长期'],
+      ['Fabric / Power BI 数据平台', '从 Salesforce 或核心系统接数据，夜间批处理与刷新的设计，报表停摆的原因排查。', '单次 / 长期'],
+      ['AI导入的 PoC 设计与落地', '先做什么的取舍，PoC 计划书，陪跑到一线人员能持续用起来为止。', '长期'],
+      ['中日桥梁', '与中国开发团队的需求对接、评审、进度可视化。在把日语规格书原样丢过去出问题之前。', '单次 / 长期'],
+    ]},
+    flow: { h: '委托流程', steps: [['联系', '把困扰你的事列成几条就行。'], ['30 分钟沟通', '免费。很多问题在这一步就解决了。'], ['报价与确认', '用文字确定范围和交付物。'], ['开始', '每周汇报进度。']] },
+    anon: { h: '关于案件复盘', desc: '匿名化原则', rules: ['不写公司名、产品名和特有的业务术语，只写行业和规模。', '时间会前后调整，也可能把多个案件的要素合并。不会让人能还原出具体是哪个案件。', '只写技术判断和推进方式。不写对个人的评价，也不写合同条件。', '发布后如有相关方提出要求，会修改或撤下。'] },
+    contact: { h: '联系', text: '日语、中文、英语都可以。通常 2 个工作日内回复。', btn: '发邮件联系' },
+  },
+  en: {
+    eyebrow: 'About', title: 'Who runs this site, and what I can help with',
+    role: 'Salesforce developer / Project manager', base: 'Tokyo · Japanese / Chinese / English',
+    dl: [['Areas', 'Salesforce · Fabric / Power BI · AI adoption'], ['Position', 'Both developer and PM. Long experience on the subcontractor side'], ['Contact', '[email address]']],
+    bio: ['I run business-system projects at Japanese companies as both a developer and a PM. Native Chinese speaker, working with clients in Japanese every day. What I do best: keep a project moving without breaking it when it started before the requirements were settled.', 'This site only covers problems that actually happened on projects, and the fixes that actually worked. I can only write about what I did with my own hands at the client’s desk.'],
+    services: { h: 'What I can help with', items: [
+      ['Salesforce development & design review', 'Apex / LWC / Flow implementation, design reviews of existing orgs, and troubleshooting when deployments fail or performance drops.', 'Spot / Ongoing'],
+      ['Fabric / Power BI data platforms', 'Integrations from Salesforce and core systems, nightly batch and refresh design, finding out why reports stop.', 'Spot / Ongoing'],
+      ['AI adoption: PoC design and rollout', 'Narrowing down what to do first, PoC plans, and staying with the team until people on the floor keep using it.', 'Ongoing'],
+      ['Japan–China bridge', 'Spec hand-offs, reviews, and progress visibility with development teams in China. Before a Japanese spec gets thrown over the wall as-is.', 'Spot / Ongoing'],
+    ]},
+    flow: { h: 'How an engagement works', steps: [['Get in touch', 'A few bullet points about what is stuck is enough.'], ['30-minute call', 'Free. Many problems end here.'], ['Quote and agreement', 'Scope and deliverables in writing.'], ['Start', 'Weekly progress reports.']] },
+    anon: { h: 'About the case notes', desc: 'Anonymization policy', rules: ['No company names, product names, or client-specific business terms. Industry and rough size only.', 'Timelines are shifted and elements of several projects may be combined. Nothing can be traced back to one project.', 'Only technical decisions and how the work was run. No evaluations of individuals, nothing about contract terms.', 'If someone involved asks after publication, the content is corrected or withdrawn.'] },
+    contact: { h: 'Contact', text: 'Japanese, Chinese, or English. I usually reply within two business days.', btn: 'Email me' },
+  },
+}[lang];
+---
+<Base lang={lang} title={s.aboutFull} description={c.bio[0]} path="about/">
+  <section class="grid-paper">
+    <div class="wrap page-hero">
+      <div class="intro"><span class="eyebrow">{c.eyebrow}</span><h1>{c.title}</h1></div>
+    </div>
+  </section>
+  <section class="wrap body">
+    <aside class="profile sticky" id="operator">
+      <div class="photo"></div>
+      <div class="id">
+        <span class="mincho nm">{s.authorName}</span>
+        <span class="role">{c.role}</span>
+        <span class="base">{c.base}</span>
+      </div>
+      <dl>{c.dl.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
+    </aside>
+    <div class="content">
+      <div class="prose bio">{c.bio.map((p) => <p>{p}</p>)}</div>
+      <div class="block">
+        <SectionHead num="01" title={c.services.h} />
+        {c.services.items.map(([n, d, k]) => <div class="svc"><span class="svc-n">{n}</span><span class="svc-d">{d}</span><span class="pill">{k}</span></div>)}
+      </div>
+      <div class="block">
+        <SectionHead num="02" title={c.flow.h} />
+        <div class="steps">{c.flow.steps.map(([n, d], i) => <div class="step"><span class="mincho sn">{i + 1}</span><span class="st">{n}</span><span class="sd">{d}</span></div>)}</div>
+      </div>
+      <div class="block">
+        <SectionHead num="03" title={c.anon.h} desc={c.anon.desc} />
+        <ul class="note rules">{c.anon.rules.map((r) => <li>{r}</li>)}</ul>
+      </div>
+      <div class="block" id="contact">
+        <SectionHead num="04" title={c.contact.h} />
+        <div class="contact">
+          <p>{c.contact.text}</p>
+          <a class="btn primary" href="mailto:"><Icon name="mail" />{c.contact.btn}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .body { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 96px; padding-top: 64px; padding-bottom: 80px; align-items: start; }
+  .profile { display: flex; flex-direction: column; gap: 20px; }
+  .photo { width: 200px; height: 240px; background: #E4DFD5; border: 1px solid var(--line-3); }
+  .id { display: flex; flex-direction: column; gap: 4px; }
+  .nm { font-size: 24px; font-weight: 600; letter-spacing: 0.08em; }
+  .role { font-size: 13px; color: var(--ink-2); } .base { font-size: 13px; color: var(--ink-3); }
+  dl { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 8px 12px; font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+  dt { color: var(--ink-3); } dd { margin: 0; }
+  .content { display: flex; flex-direction: column; gap: 56px; max-width: 760px; }
+  .bio { display: flex; flex-direction: column; gap: 16px; }
+  .block { display: flex; flex-direction: column; gap: 4px; }
+  .svc { display: grid; grid-template-columns: 180px minmax(0, 1fr) 120px; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line-2); align-items: start; }
+  .svc-n { font-size: 15px; font-weight: 700; } .svc-d { font-size: 14px; color: var(--ink-2); line-height: 1.8; }
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-top: 24px; }
+  .step { display: flex; flex-direction: column; gap: 8px; }
+  .sn { font-size: 26px; color: var(--accent); } .st { font-size: 14px; font-weight: 700; } .sd { font-size: 13px; color: var(--ink-2); line-height: 1.7; }
+  .rules { display: flex; flex-direction: column; gap: 2px; padding-top: 16px; }
+  .contact { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; gap: 24px; flex-wrap: wrap; }
+  .contact p { font-size: 14px; color: var(--ink-2); line-height: 1.8; }
+  @media (max-width: 1100px) { .body { grid-template-columns: 1fr; gap: 48px; } .profile { flex-direction: row; flex-wrap: wrap; align-items: flex-start; } dl { flex: 1 1 260px; border-top: 0; padding-top: 0; } }
+  @media (max-width: 768px) { .body { padding-top: 32px; padding-bottom: 48px; } .svc { grid-template-columns: 1fr; gap: 6px; } .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .photo { width: 120px; height: 144px; } }
+</style>

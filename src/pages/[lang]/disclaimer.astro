@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import { langs, t, type Lang } from '../../i18n';
+export function getStaticPaths() { return langs.map((lang) => ({ params: { lang } })); }
+const lang = Astro.params.lang as Lang;
+const s = t(lang);
+const c = {
+  ja: { title: '免責事項', updated: '最終更新：2026年9月16日', body: [
+    ['正確性について', '当サイトの内容は、運営者が案件で実際に確認した範囲で記載していますが、Salesforce や Microsoft Fabric などの製品仕様は更新されます。掲載時点の情報であり、正確性・最新性を保証するものではありません。実施の際は必ず公式ドキュメントで確認してください。'],
+    ['損害について', '当サイトの情報、ならびに配布しているツール・テンプレートを利用したことで生じたいかなる損害についても、運営者は責任を負いません。本番環境での操作は、必ず検証環境で確認のうえ、自己の責任で行ってください。'],
+    ['案件の記録について', '「案件の記録」は、企業名・製品名・固有の業務用語を除き、時期や構成を変えたうえで掲載しています。実在の特定の案件・企業・個人を示すものではありません。'],
+    ['外部リンクについて', '当サイトから外部サイトへのリンク先の内容について、運営者は責任を負いません。'],
+    ['著作権について', '当サイトの文章・図版の著作権は運営者に帰属します。引用は出典を明記のうえ、常識的な範囲で行ってください。ツール・テンプレートは、各ページに記載の条件で利用できます。'],
+  ]},
+  zh: { title: '免责声明', updated: '最后更新：2026年9月16日', body: [
+    ['关于准确性', '本站内容基于运营者在项目中实际确认的范围撰写，但 Salesforce、Microsoft Fabric 等产品规格会更新。内容仅代表发布时的信息，不保证准确和最新。实施前请务必查阅官方文档。'],
+    ['关于损失', '因使用本站信息及所提供的工具、模板而产生的任何损失，运营者不承担责任。生产环境的操作请务必先在验证环境确认，并自行承担责任。'],
+    ['关于案件复盘', '「案件复盘」已去除公司名、产品名和特有业务术语，并调整了时间和构成。不指向任何真实存在的特定案件、企业或个人。'],
+    ['关于外部链接', '对本站链接指向的外部网站内容，运营者不承担责任。'],
+    ['关于版权', '本站文章、图表的版权归运营者所有。引用请注明出处并保持在合理范围内。工具与模板按各页面注明的条件使用。'],
+  ]},
+  en: { title: 'Disclaimer', updated: 'Last updated: September 16, 2026', body: [
+    ['Accuracy', 'Content reflects what the operator verified on actual projects, but product specifications for Salesforce, Microsoft Fabric and others change. Information is as of publication and is not guaranteed to be accurate or current. Always check official documentation before acting.'],
+    ['Liability', 'The operator accepts no liability for any damage arising from the use of information on this site or of the tools and templates distributed here. Verify in a sandbox before touching production, at your own risk.'],
+    ['Case notes', 'Case notes omit company names, product names and client-specific terms, and alter timelines and structure. They do not describe any specific real project, company or individual.'],
+    ['External links', 'The operator is not responsible for the content of external sites linked from this site.'],
+    ['Copyright', 'Text and figures on this site are copyright of the operator. Quote within reasonable limits with attribution. Tools and templates may be used under the terms stated on their pages.'],
+  ]},
+}[lang];
+---
+<Base lang={lang} title={c.title} path="disclaimer/">
+  <section class="grid-paper"><div class="wrap page-hero"><div class="intro"><span class="eyebrow">Legal</span><h1>{c.title}</h1><p>{c.updated}</p></div></div></section>
+  <section class="wrap legal prose">
+    {c.body.map(([h, p]) => <><h2>{h}</h2><p>{p}</p></>)}
+  </section>
+</Base>
+<style>.legal { max-width: 760px; padding-top: 24px; padding-bottom: 80px; }</style>

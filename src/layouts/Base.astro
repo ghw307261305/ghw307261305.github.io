@@ -1,0 +1,44 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, langs, type Lang } from '../i18n';
+import '../styles/global.css';
+interface Props { lang: Lang; title?: string; description?: string; path: string; available?: Lang[]; }
+const { lang, title, description, path, available = langs } = Astro.props;
+const s = t(lang);
+const fullTitle = title ? `${title} | ${s.siteName}` : `${s.siteName} — ${s.siteSub}`;
+const site = Astro.site ?? new URL('http://localhost/');
+const canonical = new URL(`/${lang}/${path}`, site);
+---
+<!doctype html>
+<html lang={lang === 'zh' ? 'zh-Hans' : lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description ?? s.siteDescription} />
+    <link rel="canonical" href={canonical} />
+    {available.map((l) => <link rel="alternate" hreflang={l} href={new URL(`/${l}/${path}`, site)} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL(`/ja/${path}`, site)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description ?? s.siteDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+  </head>
+  <body>
+    <Header lang={lang} path={path} available={available} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>
+<style is:global>
+  body { min-height: 100vh; display: flex; flex-direction: column; }
+  main { flex: 1 0 auto; }
+</style>

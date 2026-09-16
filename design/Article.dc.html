@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    html, body { margin: 0; background: #F7F5F0; color: #1B1A17; }
+    body { font-family: 'BIZ UDPGothic', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif; font-size: 15px; line-height: 1.8; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+    a { color: #2B4A6F; text-decoration: none; } a:hover { color: #B5432A; }
+    h1, h2, h3, h4, p, ul, ol { margin: 0; } ul, ol { padding: 0; list-style: none; }
+    .mincho { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif; }
+    .mono { font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace; }
+    .eyebrow { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8A867E; }
+    .grid-paper { background-color: #F7F5F0; background-image: linear-gradient(rgba(27,26,23,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(27,26,23,0.055) 1px, transparent 1px); background-size: 24px 24px; }
+    .nav a { color: #1B1A17; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; } .nav a:hover { color: #B5432A; }
+    .util a { color: #514E48; font-size: 13px; } .util a:hover { color: #B5432A; }
+    .brand { display: flex; align-items: baseline; gap: 12px; color: #1B1A17; }
+    .brand .name { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; }
+    .brand .sub { font-size: 11px; color: #8A867E; letter-spacing: 0.08em; }
+    .tag { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border: 1px solid #DED9CF; border-radius: 2px; font-size: 11px; color: #514E48; letter-spacing: 0.04em; white-space: nowrap; background: #FFFFFF; }
+    .tag.research { border-color: #B5432A; color: #B5432A; }
+    .date { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 12px; color: #8A867E; letter-spacing: 0.04em; }
+    .row { display: grid; grid-template-columns: 56px 96px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid #E9E5DC; }
+    .row .t { color: #1B1A17; font-size: 15px; line-height: 1.6; } .row .t:hover { color: #B5432A; }
+    .sec-head { display: flex; align-items: baseline; justify-content: space-between; border-top: 2px solid #1B1A17; padding-top: 12px; }
+    .sec-head h2 { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-size: 22px; font-weight: 600; letter-spacing: 0.06em; }
+    .sec-head .num { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 12px; color: #B5432A; letter-spacing: 0.1em; }
+    .sec-head .desc { font-size: 12px; color: #8A867E; }
+    .more { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #514E48; }
+    .ad { border: 1px dashed #C9C3B6; background: repeating-linear-gradient(45deg, transparent 0 10px, rgba(27,26,23,0.03) 10px 20px); color: #8A867E; font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.12em; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.6; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 22px; border: 1px solid #1B1A17; border-radius: 2px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: #1B1A17; background: transparent; }
+    .btn.primary { background: #1B1A17; color: #F7F5F0; } .btn.primary:hover { background: #B5432A; border-color: #B5432A; color: #FFFFFF; }
+    .btn:hover { color: #B5432A; border-color: #B5432A; }
+    .card { background: #FFFFFF; border: 1px solid #E4DFD5; border-radius: 2px; }
+    .rail-h { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.16em; color: #8A867E; text-transform: uppercase; }
+    .footer a { color: #514E48; font-size: 13px; } .footer a:hover { color: #B5432A; }
+    .footer .h { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #1B1A17; }
+    .lang { display: inline-flex; border: 1px solid #DED9CF; border-radius: 2px; overflow: hidden; }
+    .lang span { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; padding: 3px 8px; color: #8A867E; }
+    .lang span.on { background: #1B1A17; color: #F7F5F0; }
+    .lead { border: 1px solid #DED9CF; border-left: 3px solid #1B1A17; background: #FFFFFF; padding: 20px 24px; }
+    .prose p { font-size: 16px; line-height: 2; color: #1B1A17; }
+    .prose h2 { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-size: 24px; font-weight: 600; letter-spacing: 0.04em; line-height: 1.5; }
+    .prose h3 { font-size: 16px; font-weight: 700; letter-spacing: 0.02em; }
+    .code { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 13px; line-height: 1.75; background: #1E1D1A; color: #E8E4DA; padding: 18px 22px; border-radius: 2px; white-space: pre; overflow: hidden; }
+    .code .c { color: #8A867E; } .code .k { color: #E0A458; } .code .s { color: #9BC48D; }
+    .step { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 20px; }
+    .step .n { font-family: 'Shippori Mincho', serif; font-size: 26px; color: #B5432A; line-height: 1.2; }
+    .toc a { display: block; font-size: 13px; color: #514E48; line-height: 1.6; padding: 6px 0 6px 14px; border-left: 2px solid #E9E5DC; }
+    .toc a.on { border-left-color: #B5432A; color: #1B1A17; font-weight: 700; }
+    .chap a { display: block; font-size: 13px; color: #514E48; line-height: 1.6; padding: 8px 0; border-bottom: 1px solid #E9E5DC; }
+    .chap a.on { color: #1B1A17; font-weight: 700; }
+    .note li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.9; }
+    .note li::before { content: ""; position: absolute; left: 0; top: 13px; width: 8px; height: 1px; background: #B5432A; }
+    table.tbl { width: 100%; border-collapse: collapse; }
+    .tbl th { text-align: left; font-size: 11px; letter-spacing: 0.12em; color: #8A867E; font-weight: 400; font-family: 'IBM Plex Mono', Menlo, monospace; padding: 0 16px 10px 0; border-bottom: 2px solid #1B1A17; }
+    .tbl td { padding: 14px 16px 14px 0; border-bottom: 1px solid #E9E5DC; vertical-align: top; font-size: 14px; line-height: 1.7; }
+    .tbl td.ja { font-weight: 700; color: #1B1A17; }
+    .tbl td.zh { color: #1B1A17; } .tbl td.en { color: #514E48; } .tbl td.memo { color: #8A867E; font-size: 13px; }
+    .pill { display: inline-flex; font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.1em; padding: 2px 6px; border: 1px solid #DED9CF; border-radius: 2px; color: #514E48; }
+    .pill.off { color: #C9C3B6; border-style: dashed; }
+  </style>
+</helmet>
+<div style="width: 1440px; min-height: 2400px; background: #F7F5F0; display: flex; flex-direction: column;">
+  <header style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 56px; border-bottom: 1px solid #DED9CF; background: #F7F5F0;">
+  <a class="brand" href="#">
+    <span class="name">ONSITE LAB</span>
+    <span class="sub">現場の技術ノート</span>
+  </a>
+  <nav class="nav" style="display: flex; align-items: center; gap: 36px;">
+    <a href="#">技術</a>
+    <a href="#">マネジメント</a>
+    <a href="#">案件の記録</a>
+    <a href="#">随想</a>
+  </nav>
+  <div class="util" style="display: flex; align-items: center; gap: 22px;">
+    <a href="#">ツール・テンプレート</a>
+    <a href="#">用語対照</a>
+    <a href="#">About</a>
+    <span style="width: 1px; height: 18px; background: #DED9CF;"></span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#514E48" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+    <span class="lang"><span class="on">JA</span><span>ZH</span></span>
+  </div>
+</header>
+
+  <div style="display: flex; align-items: center; gap: 10px; padding: 14px 56px; border-bottom: 1px solid #E9E5DC; font-size: 12px; color: #8A867E;">
+    <a href="#" style="color: #8A867E;">トップ</a><span>/</span><a href="#" style="color: #8A867E;">技術</a><span>/</span><a href="#" style="color: #8A867E;">Salesforce</a><span>/</span><span style="color: #514E48;">Apex テストクラスのカバレッジ</span>
+  </div>
+  <section style="display: grid; grid-template-columns: 220px minmax(0, 1fr) 200px; gap: 64px; padding: 48px 56px 80px; align-items: start;">
+
+    <aside style="display: flex; flex-direction: column; gap: 10px; position: sticky; top: 24px;">
+      <span class="rail-h">技術 › Salesforce</span>
+      <nav class="chap" style="display: flex; flex-direction: column;">
+        <a href="#">Salesforce 開発環境の作り方、案件で困らない最小構成</a>
+        <a href="#" class="on">Apex テストクラスのカバレッジを 75% に届かせる</a>
+        <a href="#">LWC の undefined エラーを 30 分で切り分ける</a>
+        <a href="#">フロー か Apex か。判断の基準を 1 枚にする</a>
+        <a href="#">本番デプロイ前チェックリスト</a>
+        <a href="#">データ移行で毎回ハマる 5 つの型変換</a>
+      </nav>
+      <a class="more" href="#" style="margin-top: 8px;">章の目次を見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="14 6 20 12 14 18"></polyline></svg></a>
+    </aside>
+
+    <article class="prose" style="display: flex; flex-direction: column; gap: 36px; max-width: 720px;">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span class="tag">Salesforce</span>
+          <span class="date">公開 2026.09.12</span><span class="date">更新 2026.09.14</span><span class="date">読了 8 分</span>
+        </div>
+        <h1 class="mincho" style="font-size: 36px; line-height: 1.5; font-weight: 600; letter-spacing: 0.02em;">Apex テストクラスのカバレッジを 75% に届かせる、現場の手順</h1>
+        <div class="lead" style="display: flex; flex-direction: column; gap: 8px;">
+          <span class="eyebrow" style="color: #B5432A;">この記事で解決すること</span>
+          <p style="font-size: 15px; line-height: 1.9;">デプロイ直前に「Code coverage 68%」で止まったとき、どのクラスから手を付ければ最短で 75% を超えるかを、判断する順番で書きます。対象は、すでに動いている本番組織に追加開発を入れるケースです。</p>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <h2>1. なぜ 75% で止まるのか</h2>
+        <p>組織全体のカバレッジは、すべての Apex クラスとトリガーの行数を合計して計算されます。自分の追加分が 100% でも、過去に放置されたバッチやトリガーが分母を押し下げていれば、デプロイは通りません。最初に見るべきは自分のコードではなく、分母の大きいクラスです。</p>
+        <p>もうひとつ多いのが、Sandbox では通るのに本番で落ちるケースです。本番にだけ残っている古いクラスが原因なので、必ず本番組織の数字で確認します。</p>
+      </div>
+
+      <div class="ad" style="width: 100%; height: 90px;">AD B · 横長 728 × 90 相当（最初の H2 の直後・本文幅に追従）</div>
+
+      <div style="display: flex; flex-direction: column; gap: 28px;">
+        <h2>2. 手順</h2>
+        <div class="step">
+          <span class="n">1</span>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <h3>未カバー行数の多いクラスを上から並べる</h3>
+            <p>Developer Console ではなく Tooling API で取ります。ここで並べ替えができるかどうかで、作業時間が半日変わります。</p>
+            <div class="code"><span class="c">// Tooling API（Query Editor で「Use Tooling API」にチェック）</span>
+<span class="k">SELECT</span> ApexClassOrTrigger.Name, NumLinesCovered, NumLinesUncovered
+<span class="k">FROM</span> ApexCodeCoverageAggregate
+<span class="k">ORDER BY</span> NumLinesUncovered <span class="k">DESC</span></div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="n">2</span>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <h3>上位 3 クラスに「通るだけ」のテストを足す</h3>
+            <p>この段階では正しさを検証しません。目的は分母を埋めることです。例外系まで書くのは 75% を超えてからで構いません。</p>
+            <div class="code"><span class="k">@isTest</span>
+<span class="k">private class</span> LegacyBatchTest {
+    <span class="k">@isTest static void</span> runBatch() {
+        <span class="k">Test</span>.startTest();
+        <span class="k">Database</span>.executeBatch(<span class="k">new</span> LegacyBatch(), 200);
+        <span class="k">Test</span>.stopTest();
+        <span class="c">// アサーションは後で足す。まず分母を埋める</span>
+    }
+}</div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="n">3</span>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <h3>対象クラスだけ実行して数字を確認する</h3>
+            <p>Run All Tests は本番組織だと数十分かかります。足したクラスだけ回して、集計値が動いたかを見ます。</p>
+            <div class="code">sf apex run test --class-names LegacyBatchTest --code-coverage --result-format human</div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="n">4</span>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <h3>デプロイ時のテストレベルを RunLocalTests に固定する</h3>
+            <p>管理パッケージのテストまで走ると、自分では直せない失敗で止まります。デプロイ設定で明示しておくと、次の人も迷いません。</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <h2>3. 注意点</h2>
+        <ul class="note" style="display: flex; flex-direction: column; gap: 4px;">
+          <li>「通るだけ」のテストは、必ずチケットに残す。後で例外系を足す前提であることを、レビュアーにも見える形にしておく。</li>
+          <li>トリガーのカバレッジは 1% でもあればデプロイ可能だが、0% だと止まる。放置されたトリガーは最優先で確認する。</li>
+          <li>本番組織の集計値は、テスト実行後すぐには更新されないことがある。数分待ってから再取得する。</li>
+        </ul>
+      </div>
+
+      <div style="border-top: 2px solid #1B1A17; padding-top: 20px; display: flex; flex-direction: column; gap: 6px;">
+        <span class="mincho" style="font-size: 18px; font-weight: 600; letter-spacing: 0.08em;">次に読む</span>
+        <ul>
+          <li class="row" style="grid-template-columns: 96px minmax(0, 1fr);"><span class="tag">Salesforce</span><a class="t" href="#">本番デプロイ前チェックリスト</a></li>
+          <li class="row" style="grid-template-columns: 96px minmax(0, 1fr);"><span class="tag">ツール</span><a class="t" href="#">Apex テストクラス雛形（TestSetup・データファクトリつき）</a></li>
+          <li class="row" style="grid-template-columns: 96px minmax(0, 1fr); border-bottom: none;"><span class="tag">案件の記録</span><a class="t" href="#">販売管理の Salesforce 移行、要件定義で決め切れなかった 3 つの判断</a></li>
+        </ul>
+      </div>
+    </article>
+
+    <aside style="display: flex; flex-direction: column; gap: 32px; position: sticky; top: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <span class="rail-h">本文目次</span>
+        <nav class="toc" style="display: flex; flex-direction: column;">
+          <a href="#" class="on">この記事で解決すること</a>
+          <a href="#">1. なぜ 75% で止まるのか</a>
+          <a href="#">2. 手順</a>
+          <a href="#">3. 注意点</a>
+          <a href="#">次に読む</a>
+        </nav>
+      </div>
+      <div class="ad" style="width: 160px; height: 600px;">AD C<br>160 × 600<br>追従</div>
+    </aside>
+  </section>
+  <footer class="footer" style="border-top: 1px solid #DED9CF; background: #F1EEE6; padding: 56px 56px 32px;">
+  <div style="display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <a class="brand" href="#"><span class="name">ONSITE LAB</span></a>
+      <p style="font-size: 13px; color: #514E48; line-height: 1.8; max-width: 380px;">日本企業のIT案件の現場で、実際に起きたことと効いた対処を、再現できる手順として残しています。日本語を主に、中国語・英語でも一部を公開しています。</p>
+      <span class="lang"><span class="on">日本語</span><span>中文</span><span>English</span></span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span class="h">コンテンツ</span>
+      <a href="#">技術</a><a href="#">マネジメント</a><a href="#">案件の記録</a><a href="#">随想</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span class="h">ページ</span>
+      <a href="#">ツール・テンプレート</a><a href="#">日中IT用語対照</a><a href="#">About・依頼できること</a><a href="#">更新履歴</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span class="h">サイトについて</span>
+      <a href="#">運営者情報</a><a href="#">免責事項</a><a href="#">プライバシーポリシー</a><a href="#">お問い合わせ</a>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 44px; padding-top: 18px; border-top: 1px solid #DED9CF;">
+    <span class="mono" style="font-size: 11px; color: #8A867E; letter-spacing: 0.08em;">© 2026 ONSITE LAB</span>
+    <span style="font-size: 11px; color: #8A867E;">本サイトは広告（Google AdSense 等）を掲載しています。案件の記録は、すべて匿名化のうえ掲載しています。</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+</body>
+</html>
