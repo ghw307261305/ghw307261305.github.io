@@ -10,9 +10,13 @@ const s = t(lang);
 const c = {
   ja: {
     eyebrow: 'About', title: '運営者と、依頼できること',
-    role: 'ITエンジニア / プロジェクトマネージャー · 経験 16 年', base: '東京 · 日本語 / 中国語 / 英語',
-    dl: [['経歴', '2010 年から IT 業界。大連で対日・中国国内の案件を経験し、2014 年に来日。日本の現場で 12 年'], ['業種', '金融・保険、物流、CRM、ERP'], ['技術', 'C / C++ / Java / Python / JavaScript の汎用開発から、Salesforce・ServiceNow、AWS / GCP / Azure の設計・構築まで'], ['連絡', '[メールアドレス]']],
-    bio: ['中国・四川省成都の、山あいの小さな村に生まれました。家は豊かではなく、村を出る道は勉強しかありませんでした。大学を出て大連で IT の仕事に就き、対日案件と中国国内案件の両方を経験しました。2010 年から数えて 16 年、関わった案件は大小あわせて 40〜50 件になります。', '2014 年に来日してからは、日本企業の現場で 12 年働いています。金融・保険、物流、CRM、ERP と業種はさまざまですが、日本の開発プロセスの中で要件から本番リリースまでを回してきた経験は共通しています。技術は C や Java での汎用開発から始まり、いまは Salesforce、ServiceNow、AWS / GCP / Azure での設計・構築まで対応しています。', 'このサイトには、その案件で実際に起きた問題と、そのとき効いた対処だけを書いています。書けるのは、客先のPCの前で自分が手を動かしたことだけです。仕事で使っているツールやテンプレートも、少しずつ整えて公開していきます。相談や依頼は、下の連絡先からどうぞ。'],
+    role: 'ITエンジニア / プロジェクトマネージャー', base: '東京 · 日本語 / 中国語 / 英語',
+    dl: [['経歴', 'IT業界 16 年。日中で 40 件超の案件を担当。2014 年より日本を拠点に活動'], ['業種', '金融・保険、物流、CRM、ERP'], ['技術', 'C / C++ / Java / Python / JavaScript の汎用開発から、Salesforce・ServiceNow、AWS / GCP / Azure の設計・構築まで'], ['連絡', '[メールアドレス]']],
+    bio: [
+      'IT業界で 16 年、日本と中国の両方で 40 件を超えるシステム案件を手がけてきたエンジニア／プロジェクトマネージャーです。2014 年からは日本企業の現場に拠点を移し、金融・保険、物流、CRM、ERP の各領域で、要件定義から本番リリース、保守までを一貫して担当してきました。',
+      '技術面では、C / C++ / Java / Python / JavaScript による業務システム開発を土台に、Salesforce・ServiceNow などのプラットフォーム、AWS / GCP / Azure でのクラウド設計・構築まで対応します。開発者として手を動かすことと、PM として案件全体を設計・統制すること、その両方を同じ案件の中で担えるのが強みです。',
+      '日本語・中国語・英語でのコミュニケーションが可能で、日本の顧客と中国の開発チームの間に立つ案件も数多く経験しています。このサイトでは、実案件で検証済みの手順と判断、および業務で実際に使っているツール・テンプレートを公開しています。ご相談・ご依頼は下記の連絡先までお寄せください。',
+    ],
     services: { h: '依頼できること', items: [
       ['Salesforce / ServiceNow の開発・設計レビュー', 'Apex / LWC / フローの実装、既存組織の設計レビュー、デプロイが通らない・パフォーマンスが出ないときの切り分け。', 'スポット / 継続'],
       ['クラウド（AWS / GCP / Azure）の設計・構築', '業務システムのクラウド移行、構成設計、デプロイの自動化。基幹系との連携やバッチ設計を含みます。', 'スポット / 継続'],
@@ -26,9 +30,13 @@ const c = {
   },
   zh: {
     eyebrow: 'About', title: '关于我，以及可以委托的事',
-    role: 'IT工程师 / 项目经理 · 16 年经验', base: '东京 · 日语 / 中文 / 英语',
-    dl: [['经历', '2010 年入行。在大连做过对日和国内项目，2014 年来日本，在日本一线 12 年'], ['行业', '金融保险、物流、CRM、ERP'], ['技术', '从 C / C++ / Java / Python / JavaScript 的通用开发，到 Salesforce、ServiceNow，以及 AWS / GCP / Azure 的设计与部署'], ['联系', '[邮箱地址]']],
-    bio: ['我出生在四川成都的一个偏远小山村。家里条件差，走出山村的路只有读书一条。大学毕业后在大连进入 IT 行业，对日项目和国内项目都做过。从 2010 年算起，到现在 16 年，经手的项目大大小小有四五十个。', '2014 年来日本，在日本企业的一线工作了 12 年。金融保险、物流、CRM、ERP，行业不同，但都是在日本的开发流程里，从需求一直做到上线。技术从 C、Java 的通用开发起步，现在 Salesforce、ServiceNow，以及 AWS / GCP / Azure 上的设计和部署都能对应。', '这个网站只写项目里真实发生过的问题，和当时真正有效的处理办法。能写的，只有我自己在客户电脑前亲手做过的事。工作中常用的工具和模板，也会慢慢整理出来分享。有咨询或委托，请通过下面的联系方式找我。'],
+    role: 'IT工程师 / 项目经理', base: '东京 · 日语 / 中文 / 英语',
+    dl: [['经历', 'IT 行业 16 年，中日两地 40 余个项目。2014 年起以日本为据点'], ['行业', '金融保险、物流、CRM、ERP'], ['技术', '从 C / C++ / Java / Python / JavaScript 的通用开发，到 Salesforce、ServiceNow，以及 AWS / GCP / Azure 的设计与部署'], ['联系', '[邮箱地址]']],
+    bio: [
+      '我是一名在 IT 行业深耕 16 年的工程师／项目经理，在中国和日本累计主导和参与超过 40 个系统项目。2014 年起常驻日本，在金融保险、物流、CRM、ERP 等领域，全流程负责从需求定义到上线、运维的各个阶段。',
+      '技术上，以 C / C++ / Java / Python / JavaScript 的业务系统开发为基础，覆盖 Salesforce、ServiceNow 等平台，以及 AWS / GCP / Azure 上的云架构设计与部署。既能作为开发者亲自动手，也能作为 PM 统筹整个项目，并且能在同一个项目里同时承担这两个角色，是我最大的优势。',
+      '可以用日语、中文、英语工作，有大量在日本客户与中国开发团队之间承担桥梁角色的经验。这个网站公开的，是在真实项目中验证过的步骤和判断，以及工作中实际在用的工具和模板。咨询与合作，请通过下方联系方式与我联系。',
+    ],
     services: { h: '可以委托的事', items: [
       ['Salesforce / ServiceNow 开发・设计评审', 'Apex / LWC / Flow 实现，既有组织的设计评审，部署不通过、性能上不去时的问题定位。', '单次 / 长期'],
       ['云平台（AWS / GCP / Azure）设计与部署', '业务系统上云、架构设计、部署自动化。包括与核心系统的对接和批处理设计。', '单次 / 长期'],
@@ -42,9 +50,13 @@ const c = {
   },
   en: {
     eyebrow: 'About', title: 'Who runs this site, and what I can help with',
-    role: 'IT engineer / Project manager · 16 years', base: 'Tokyo · Japanese / Chinese / English',
-    dl: [['Background', 'In IT since 2010. Japan-facing and domestic projects in Dalian, then moved to Japan in 2014. 12 years on-site at Japanese companies'], ['Industries', 'Finance & insurance, logistics, CRM, ERP'], ['Skills', 'General development in C / C++ / Java / Python / JavaScript through to Salesforce, ServiceNow, and design and deployment on AWS / GCP / Azure'], ['Contact', '[email address]']],
-    bio: ['I was born in a small mountain village outside Chengdu, Sichuan. My family had little, and studying was the only way out. After university I started in IT in Dalian, working on both Japan-facing and domestic Chinese projects. Counting from 2010, that is 16 years and somewhere between forty and fifty projects, large and small.', 'I moved to Japan in 2014 and have spent 12 years on-site at Japanese companies. Finance and insurance, logistics, CRM, ERP: the industries differ, but the work has always been the same, running a project inside the Japanese development process from requirements to production release. On the technical side I started with general development in C and Java, and today cover Salesforce, ServiceNow, and design and deployment on AWS, GCP and Azure.', 'This site only covers problems that actually happened on those projects, and the fixes that actually worked. I can only write about what I did with my own hands at the client’s desk. The tools and templates I use at work will be tidied up and shared here over time. For consulting or project requests, use the contact details below.'],
+    role: 'IT engineer / Project manager', base: 'Tokyo · Japanese / Chinese / English',
+    dl: [['Background', '16 years in IT, 40+ projects across Japan and China. Based in Japan since 2014'], ['Industries', 'Finance & insurance, logistics, CRM, ERP'], ['Skills', 'General development in C / C++ / Java / Python / JavaScript through to Salesforce, ServiceNow, and design and deployment on AWS / GCP / Azure'], ['Contact', '[email address]']],
+    bio: [
+      'I am an IT engineer and project manager with 16 years in the industry and more than 40 system projects delivered across Japan and China. Based in Japan since 2014, I have owned the full lifecycle, from requirements definition through production release and maintenance, in finance and insurance, logistics, CRM and ERP.',
+      'Technically, I build on a foundation of business-system development in C / C++ / Java / Python / JavaScript, extending to platforms such as Salesforce and ServiceNow and to cloud architecture and deployment on AWS, GCP and Azure. My distinguishing strength is covering both roles on the same project: hands-on development, and end-to-end project design and control as PM.',
+      'I work in Japanese, Chinese and English, and have extensive experience bridging Japanese clients and development teams in China. This site publishes procedures and decisions verified on real projects, together with the tools and templates I use in daily work. For consulting or project enquiries, please use the contact details below.',
+    ],
     services: { h: 'What I can help with', items: [
       ['Salesforce / ServiceNow development & design review', 'Apex / LWC / Flow implementation, design reviews of existing orgs, and troubleshooting when deployments fail or performance drops.', 'Spot / Ongoing'],
       ['Cloud design & deployment (AWS / GCP / Azure)', 'Moving business systems to the cloud, architecture design, deployment automation. Including integration with core systems and batch design.', 'Spot / Ongoing'],
